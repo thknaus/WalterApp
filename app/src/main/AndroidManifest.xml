@@ -20,6 +20,12 @@
             android:label="@string/MainMenu" />
         <activity android:name=".fragments.ExitGameFragment"
             android:label="@string/dialog_exit"/>
+        <activity android:name=".fragments.NewGameFragment"
+            android:label="@string/newGame"/>
+        <activity android:name=".fragments.GameSettingsFragment"
+            android:label="@string/gameSettings"/>
+        <activity android:name=".fragments.ExistingGamesFragment"
+            android:label="@string/existingGame"/>
     </application>
 
 </manifest>

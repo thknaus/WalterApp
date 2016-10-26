@@ -52,10 +52,10 @@ public class MainMenuFragment extends AppCompatActivity implements View.OnClickL
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.button_newgame:
-                startActivity(new Intent(MainMenuFragment.this, MainMenuFragment.class));
+                startActivity(new Intent(MainMenuFragment.this, NewGameFragment.class));
                 break;
             case R.id.button_existinggame:
-                startActivity(new Intent(MainMenuFragment.this, ExitGameFragment.class));
+                startActivity(new Intent(MainMenuFragment.this, ExistingGamesFragment.class));
                 break;
             case R.id.button_gamesettings:
                 startActivity(new Intent(MainMenuFragment.this, GameSettingsFragment.class));
