@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">Der wahre Walter</string>
+    <string name="MainMenu">Hauptmenue</string>
+    <string name="newGame">Neues Spiel</string>
+    <string name="existingGame">bestehendes Spiel</string>
+    <string name="gameSettings">Einstellungen</string>
+    <string name="exitGame">Speil beenden</string>
+    <string name="yeas">Ja</string>
+    <string name="no">Nein</string>
+    <string name="dialog_exit">Spiel beenden?</string>
+    <string name="dialog_exit_mesage">bis du dir sicher, dass du das Spiel beenden möchtest?</string>
+
+
+</resources>

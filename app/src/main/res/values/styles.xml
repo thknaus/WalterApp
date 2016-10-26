@@ -1,0 +1,41 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="Button_Medium">
+        <item name="android:textColor">@color/colorTextBlack</item>
+        <item name="android:background">@drawable/rounded_corner</item>
+        <item name="android:textSize">@dimen/text_small_big</item>
+        <item name="android:layout_height">@dimen/margin_huge</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:paddingLeft">@dimen/margin_small</item>
+        <item name="android:paddingRight">@dimen/margin_small</item>
+    </style>
+
+    <style name="Button_Small">
+        <item name="android:textColor">@color/colorTextBlack</item>
+        <item name="android:background">@drawable/rounded_corner</item>
+        <item name="android:textSize">@dimen/text_small</item>
+        <item name="android:layout_height">20dp</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:paddingLeft">@dimen/margin</item>
+        <item name="android:paddingRight">@dimen/margin</item>
+    </style>
+
+    <style name="Button_Large">
+        <item name="android:textColor">@color/colorTextBlack</item>
+        <item name="android:background">@drawable/rounded_corner</item>
+        <item name="android:textSize">@dimen/text</item>
+        <item name="android:layout_height">48dp</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_marginRight">@dimen/margin_big_big</item>
+        <item name="android:layout_marginLeft">@dimen/margin_big_big</item>
+    </style>
+
+</resources>

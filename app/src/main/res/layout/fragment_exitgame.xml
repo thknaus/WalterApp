@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/exitgame"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/margin_big_big"
+            android:text="@string/dialog_exit"
+            android:textSize="@dimen/text_big_big"
+            android:textColor="@color/colorTextBlack" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/margin_big"
+            android:text="@string/dialog_exit_mesage"
+            android:textColor="@color/colorTextBlack" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:orientation="horizontal"
+            android:paddingBottom="@dimen/margin_big_big">
+
+            <Button
+                android:id="@+id/button_exit_yes"
+                style="@style/Button_Medium"
+                android:layout_gravity="center|top"
+                android:layout_marginEnd="@dimen/margin"
+                android:layout_marginTop="@dimen/margin"
+                android:text="@string/yeas" />
+
+            <Button
+                android:id="@+id/button_exit_no"
+                style="@style/Button_Medium"
+                android:layout_gravity="center|top"
+                android:layout_marginStart="@dimen/margin"
+                android:layout_marginTop="@dimen/margin"
+                android:text="@string/no" />
+
+        </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>
