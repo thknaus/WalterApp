@@ -17,7 +17,7 @@ public class MainMenuFragment extends AppCompatActivity implements View.OnClickL
         Store.d("FavoriteFragment", stringableMessage);
     }
 
-    private Button newgameBtn, existingGameBtn, gameSettingBtn, exitGameBtn;
+    private Button newgameBtn, existingGameBtn, gameSettingBtn, exitGameBtn, joinGameBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,11 +27,13 @@ public class MainMenuFragment extends AppCompatActivity implements View.OnClickL
 
         newgameBtn = (Button) findViewById(R.id.button_newgame);
         existingGameBtn = (Button) findViewById(R.id.button_existinggame);
+        joinGameBtn = (Button) findViewById(R.id.button_joingame);
         gameSettingBtn = (Button) findViewById(R.id.button_gamesettings);
         exitGameBtn = (Button) findViewById(R.id.button_exitgame);
 
         newgameBtn.setOnClickListener(this);
         existingGameBtn.setOnClickListener(this);
+        joinGameBtn.setOnClickListener(this);
         gameSettingBtn.setOnClickListener(this);
         exitGameBtn.setOnClickListener(this);
     }
@@ -57,13 +59,15 @@ public class MainMenuFragment extends AppCompatActivity implements View.OnClickL
             case R.id.button_existinggame:
                 startActivity(new Intent(MainMenuFragment.this, ExistingGamesFragment.class));
                 break;
+            case R.id.button_joingame:
+                startActivity(new Intent(MainMenuFragment.this, JoinGameFragment.class));
+                break;
             case R.id.button_gamesettings:
                 startActivity(new Intent(MainMenuFragment.this, GameSettingsFragment.class));
                 break;
             case R.id.button_exitgame:
                 onBackPressed();
                 break;
-
         }
     }
 }

@@ -26,6 +26,8 @@
             android:label="@string/gameSettings"/>
         <activity android:name=".fragments.ExistingGamesFragment"
             android:label="@string/existingGame"/>
+        <activity android:name=".fragments.JoinGameFragment"
+            android:label="@string/joinGame"/>
     </application>
 
 </manifest>

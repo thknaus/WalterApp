@@ -295,7 +295,7 @@
         jumboMode="true"
         optimize="true"
         revision="25.0.0"
-        sha1="6224dd8784737a776bf0ebf6c4e484d6575bcd3b">
+        sha1="717d46f1298e918ffa4980ae4969624face95651">
         <dex dex="E:\AndroidProjects\WalterApp\app\build\intermediates\transforms\dex\dev\debug\folders\1000\10\instant-run-bootstrap_e03988233a203f18d7b12004ef76e268b4a7a09b\classes.dex" />
     </item>
     <item

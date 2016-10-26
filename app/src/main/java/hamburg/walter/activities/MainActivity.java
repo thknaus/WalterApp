@@ -25,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        setTitleColor(getColor(R.color.colorPrimary));
         Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
             @Override

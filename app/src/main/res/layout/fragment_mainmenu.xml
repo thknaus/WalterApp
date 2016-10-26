@@ -15,9 +15,15 @@
         android:id="@+id/button_existinggame"
         style="@style/Button_Large"
         android:layout_gravity="center"
-
         android:layout_marginTop="@dimen/margin"
         android:text="@string/existingGame" />
+
+    <Button
+        android:id="@+id/button_joingame"
+        style="@style/Button_Large"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/margin"
+        android:text="@string/joinGame" />
 
     <Button
         android:id="@+id/button_gamesettings"

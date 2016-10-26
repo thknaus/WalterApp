@@ -6,5 +6,8 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="Eine Auswahl der bestehenden Spiele"/>
+        android:text="Hier sollte man die Einladungen zu eröffneten spielen sehen"/>
+
+
+
 </LinearLayout>

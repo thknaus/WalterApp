@@ -3,9 +3,58 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="test"/>
+    <Button
+        android:id="@+id/button_newgame_addplayer"
+        style="@style/Button_Large"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/margin_big_big"
+        android:text="@string/addplayer" />
+
+    <Button
+        android:id="@+id/button_newgame_player1"
+        style="@style/Button_Large"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/margin"
+        android:text="@string/yourplayername" />
+
+    <Button
+        android:id="@+id/button_newgame_player2"
+        style="@style/Button_Large"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/margin"
+        android:text="@string/playername"
+        android:visibility="gone"/>
+
+    <Button
+        android:id="@+id/button_newgame_player3"
+        style="@style/Button_Large"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/margin"
+        android:text="@string/playername"
+        android:visibility="gone"/>
+
+    <Button
+        android:id="@+id/button_newgame_player4"
+        style="@style/Button_Large"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/margin"
+        android:text="@string/playername"
+        android:visibility="gone"/>
+
+    <Button
+        android:id="@+id/button_newgame_player5"
+        style="@style/Button_Large"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/margin"
+        android:text="@string/playername"
+        android:visibility="gone"/>
+
+    <Button
+        android:id="@+id/button_newgame_player6"
+        style="@style/Button_Large"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/margin"
+        android:text="@string/playername"
+        android:visibility="gone"/>
 
 </LinearLayout>
