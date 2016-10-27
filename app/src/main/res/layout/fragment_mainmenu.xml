@@ -6,35 +6,35 @@
 
     <Button
         android:id="@+id/button_newgame"
-        style="@style/Button_Large"
+        style="@style/Button_Large_Long"
         android:layout_gravity="center"
         android:layout_marginTop="@dimen/margin_big_big"
         android:text="@string/newGame" />
 
     <Button
         android:id="@+id/button_existinggame"
-        style="@style/Button_Large"
+        style="@style/Button_Large_Long"
         android:layout_gravity="center"
         android:layout_marginTop="@dimen/margin"
         android:text="@string/existingGame" />
 
     <Button
         android:id="@+id/button_joingame"
-        style="@style/Button_Large"
+        style="@style/Button_Large_Long"
         android:layout_gravity="center"
         android:layout_marginTop="@dimen/margin"
         android:text="@string/joinGame" />
 
     <Button
         android:id="@+id/button_gamesettings"
-        style="@style/Button_Large"
+        style="@style/Button_Large_Long"
         android:layout_gravity="center"
         android:layout_marginTop="@dimen/margin"
         android:text="@string/gameSettings" />
 
     <Button
         android:id="@+id/button_exitgame"
-        style="@style/Button_Large"
+        style="@style/Button_Large_Long"
         android:layout_gravity="center"
         android:layout_marginTop="@dimen/margin"
         android:text="@string/exitGame" />
