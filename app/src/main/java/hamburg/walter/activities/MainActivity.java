@@ -21,11 +21,12 @@ public class MainActivity extends AppCompatActivity {
         Store.d("MainActivity", stringableMessage);
     }
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setTitleColor(getColor(R.color.colorPrimary));
         Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
             @Override

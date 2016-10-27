@@ -35,7 +35,7 @@ public class NewGameFragment extends AppCompatActivity implements View.OnClickLi
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.button_newgame_addplayer:
-                numberPlayer = numberPlayer + 1;
+                numberPlayer += 1;
                 newPlayer();
                 break;
         }

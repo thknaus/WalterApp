@@ -5,6 +5,7 @@
     <string name="existingGame">bestehendes Spiel</string>
     <string name="gameSettings">Einstellungen</string>
     <string name="exitGame">Speil beenden</string>
+    <string name="exit">beenden</string>
     <string name="joinGame">Spiel beitreten</string>
     <string name="yeas">Ja</string>
     <string name="no">Nein</string>
@@ -13,6 +14,7 @@
     <string name="yourplayername">X you X</string>
     <string name="addplayer">Spieler hinzufuegen</string>
     <string name="dialog_exit_mesage">bis du dir sicher, dass du das Spiel beenden möchtest?</string>
-
-
+    <string name="welcome">Wilkommen bei</string>
+    <string name="login">Login </string>
+    <string name="pw">Passwort</string>
 </resources>

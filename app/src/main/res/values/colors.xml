@@ -6,6 +6,7 @@
 
     <color name="colorTextBlack">#000000</color>
     <color name="colorTextWhite">#ffffff</color>
+    <color name="colorTextGray">#bfbfbf</color>
 
     <color name="colorButton1">#5bcbff</color>
     <color name="colorButton2">#ffffff</color>
