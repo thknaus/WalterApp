@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <EditText
+        android:id="@+id/resetpw_code"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Code"
+        android:padding="@dimen/margin"
+        android:background="@drawable/frame_inputtext"
+        android:textColor="@color/colorPrimary"
+        android:textSize="@dimen/margin"
+        android:textColorHint="@color/colorPrimary"
+        android:layout_marginTop="@dimen/margin"
+        android:layout_marginStart="@dimen/margin"
+        android:layout_marginEnd="@dimen/margin"/>
+    <EditText
+        android:id="@+id/resetpw_newpw"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="New Password"
+        android:padding="@dimen/margin"
+        android:background="@drawable/frame_inputtext"
+        android:textColor="@color/colorPrimary"
+        android:textSize="@dimen/margin"
+        android:textColorHint="@color/colorPrimary"
+        android:layout_marginTop="@dimen/margin"
+        android:layout_marginStart="@dimen/margin"
+        android:layout_marginEnd="@dimen/margin"/>
+    <Button
+        android:id="@+id/button_resetpw_change"
+        style="@style/Button_Large_Long"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/margin"
+        android:text="@string/change_pw" />
+    <Button
+        android:id="@+id/button_resetpw_cancelcode"
+        style="@style/Button_Large_Long"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/margin"
+        android:text="@string/cancelpw" />
+</LinearLayout>

@@ -18,4 +18,9 @@
     <string name="welcome">Wilkommen bei</string>
     <string name="login">Login </string>
     <string name="pw">Passwort</string>
+    <string name="register">Register</string>
+    <string name="change_pw">Change Password</string>
+    <string name="cancelpw">Cancel</string>
+    <string name="requestnewpw">Request New Password</string>
+    <string name="requestnewpwcode">Request New Password Code</string>
 </resources>

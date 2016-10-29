@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center">
+    <EditText
+        android:id="@+id/old_pw"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Old Password"
+        android:padding="@dimen/margin"
+        android:background="@drawable/frame_inputtext"
+        android:textColor="@color/colorPrimary"
+        android:textSize="@dimen/margin"
+        android:textColorHint="@color/colorPrimary"
+        android:layout_marginTop="@dimen/margin"
+        android:layout_marginStart="@dimen/margin"
+        android:layout_marginEnd="@dimen/margin"/>
+    <EditText
+        android:id="@+id/new_pw"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="New Password"
+        android:padding="@dimen/margin"
+        android:background="@drawable/frame_inputtext"
+        android:textColor="@color/colorPrimary"
+        android:textSize="@dimen/margin"
+        android:textColorHint="@color/colorPrimary"
+        android:layout_marginTop="@dimen/margin"
+        android:layout_marginStart="@dimen/margin"
+        android:layout_marginEnd="@dimen/margin"/>
+    <EditText
+        android:id="@+id/repeat_pw"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Repeat new Password"
+        android:padding="@dimen/margin"
+        android:background="@drawable/frame_inputtext"
+        android:textColor="@color/colorPrimary"
+        android:textSize="@dimen/margin"
+        android:textColorHint="@color/colorPrimary"
+        android:layout_marginTop="@dimen/margin"
+        android:layout_marginStart="@dimen/margin"
+        android:layout_marginEnd="@dimen/margin"/>
+    <Button
+        android:id="@+id/button_change_pw"
+        style="@style/Button_Large_Long"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/margin"
+        android:text="@string/change_pw" />
+    <Button
+        android:id="@+id/button_cancel_pw"
+        style="@style/Button_Large_Long"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/margin"
+        android:text="@string/cancelpw" />
+
+</LinearLayout>

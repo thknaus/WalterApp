@@ -47,3 +47,6 @@ dependencies {
     compile 'com.android.support.constraint:constraint-layout:1.0.0-beta1'
     testCompile 'junit:junit:4.12'
 }
+android {
+    useLibrary 'org.apache.http.legacy'
+}
