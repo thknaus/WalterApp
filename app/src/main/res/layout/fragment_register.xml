@@ -1,0 +1,49 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <EditText
+        android:id="@+id/registermail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="example@mail.com"
+        android:padding="@dimen/margin"
+        android:background="@drawable/frame_inputtext"
+        android:textColor="@color/colorPrimary"
+        android:textSize="@dimen/margin"
+        android:textColorHint="@color/colorPrimary"
+        android:layout_marginTop="@dimen/margin"
+        android:layout_marginStart="@dimen/margin"
+        android:layout_marginEnd="@dimen/margin"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/pw"
+        android:background="@drawable/frame_inputtext"
+        android:padding="@dimen/margin"
+        android:textColorHint="@color/colorPrimary"
+        android:textColor="@color/colorPrimary"
+        android:textSize="@dimen/margin"
+        android:layout_marginTop="@dimen/margin"
+        android:layout_marginStart="@dimen/margin"
+        android:layout_marginEnd="@dimen/margin"
+        android:id="@+id/registerpw" />
+
+    <Button
+        android:id="@+id/button_newregister"
+        style="@style/Button_Large_Long"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/margin"
+        android:text="@string/register" />
+
+    <Button
+        android:id="@+id/button_loginregister"
+        style="@style/Button_Large_Long"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/margin"
+        android:text="@string/login" />
+
+</LinearLayout>
