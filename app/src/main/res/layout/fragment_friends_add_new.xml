@@ -54,7 +54,7 @@
         android:layout_marginEnd="@dimen/margin"/>
 
     <Button
-        android:id="@+id/search"
+        android:id="@+id/button_search_friends"
         style="@style/Button_Medium"
         android:layout_gravity="center|top"
         android:layout_marginTop="@dimen/margin"
