@@ -24,6 +24,7 @@
         />
 
     <EditText
+        android:id="@+id/loginemail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Name"
@@ -37,7 +38,6 @@
         android:layout_marginEnd="@dimen/margin"/>
 
     <EditText
-
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/pw"
@@ -48,7 +48,8 @@
         android:textSize="@dimen/margin"
         android:layout_marginTop="@dimen/margin"
         android:layout_marginStart="@dimen/margin"
-        android:layout_marginEnd="@dimen/margin"/>
+        android:layout_marginEnd="@dimen/margin"
+        android:id="@+id/loginpw" />
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -72,12 +73,12 @@
             android:text="@string/register" />
 
         <Button
-            android:id="@+id/button_close"
+            android:id="@+id/button_forgotpw"
             style="@style/Button_Medium"
             android:layout_gravity="center|top"
             android:layout_marginStart="@dimen/margin"
             android:layout_marginTop="@dimen/margin"
-            android:text="@string/exit" />
+            android:text="@string/forgotpw" />
 
     </LinearLayout>
 
