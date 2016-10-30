@@ -26,6 +26,13 @@
         android:text="@string/joinGame" />
 
     <Button
+        android:id="@+id/button_friends"
+        style="@style/Button_Large_Long"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/margin"
+        android:text="@string/friends" />
+
+    <Button
         android:id="@+id/button_gamesettings"
         style="@style/Button_Large_Long"
         android:layout_gravity="center"

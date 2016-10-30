@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimaryDark">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Freund zu deiner Freundesliste hinzufuegen."
+        android:textSize="@dimen/margin_big"
+        android:gravity="center"
+        android:textColor="@color/colorPrimary"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/margin_large"
+        />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Name"
+        android:padding="@dimen/margin"
+        android:background="@drawable/frame_inputtext"
+        android:textColor="@color/colorPrimary"
+        android:textSize="@dimen/margin"
+        android:textColorHint="@color/colorPrimary"
+        android:layout_marginTop="@dimen/margin"
+        android:layout_marginStart="@dimen/margin"
+        android:layout_marginEnd="@dimen/margin"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="oder"
+        android:textSize="@dimen/margin"
+        android:gravity="center"
+        android:layout_marginTop="@dimen/margin"
+        android:textColor="@color/colorPrimary"
+        android:layout_gravity="center"
+
+        />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Spieler ID"
+        android:background="@drawable/frame_inputtext"
+        android:padding="@dimen/margin"
+        android:textColorHint="@color/colorPrimary"
+        android:textColor="@color/colorPrimary"
+        android:textSize="@dimen/margin"
+        android:layout_marginTop="@dimen/margin"
+        android:layout_marginStart="@dimen/margin"
+        android:layout_marginEnd="@dimen/margin"/>
+
+    <Button
+        android:id="@+id/search"
+        style="@style/Button_Medium"
+        android:layout_gravity="center|top"
+        android:layout_marginTop="@dimen/margin"
+        android:text="Freund suchen" />
+
+</LinearLayout>

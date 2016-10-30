@@ -23,6 +23,8 @@
             android:label="@string/dialog_exit"/>
         <activity android:name=".fragments.NewGameFragment"
             android:label="@string/newGame"/>
+        <activity android:name=".fragments.FriendsAddNewFragment"
+            android:label="@string/friends"/>
         <activity android:name=".fragments.GameSettingsFragment"
             android:label="@string/gameSettings"/>
         <activity android:name=".fragments.ExistingGamesFragment"

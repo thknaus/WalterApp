@@ -14,6 +14,7 @@
     <string name="yourplayername">X you X</string>
     <string name="addplayer">Spieler hinzufuegen</string>
     <string name="invite_friend">Freund einladen</string>
+    <string name="friends">Freunde</string>
     <string name="dialog_exit_mesage">bis du dir sicher, dass du das Spiel beenden möchtest?</string>
     <string name="welcome">Wilkommen bei</string>
     <string name="login">Login </string>
