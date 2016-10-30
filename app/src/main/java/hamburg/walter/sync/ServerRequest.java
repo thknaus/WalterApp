@@ -84,5 +84,37 @@ public class ServerRequest {
         }
         return jobj;
     }
+    
+    private static class Params {
+        String url;
+        List<NameValuePair> params;
+
+
+        Params(String url, List<NameValuePair> params) {
+            this.url = url;
+            this.params = params;
+
+        }
+    }
+
+    private class Request extends AsyncTask<Params, String, JSONObject> {
+
+        @Override
+        protected JSONObject doInBackground(Params... args) {
+
+            ServerRequest request = new ServerRequest();
+            JSONObject json = request.getJSONFromUrl(args[0].url,args[0].params);
+
+            return json;
+        }
+
+        @Override
+        protected void onPostExecute(JSONObject json) {
+
+            super.onPostExecute(json);
+
+        }
+
+    }
 
 }
