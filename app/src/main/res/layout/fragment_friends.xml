@@ -2,41 +2,97 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@color/colorPrimaryDark">
 
     <Button
-        android:id="@+id/button_cancel_pw"
+        android:id="@+id/button_find_friends"
         style="@style/Button_Large_Long"
         android:layout_gravity="center"
         android:layout_marginTop="@dimen/margin"
-        android:text="Freund finden" />
+        android:text="@string/findFriend" />
+
+    <TextView
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_gravity="center"
+        android:textColor="@color/colorPrimary"
+        android:focusable="false"
+        android:textSize="@dimen/margin_big_big"
+        android:layout_marginTop="@dimen/margin"
+        android:text="@string/yourFriends" />
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/colorPrimaryDark"
         android:layout_margin="@dimen/margin_big_big">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:layout_gravity="top|center"
+                android:layout_marginEnd="@dimen/margin"
+                android:layout_marginStart="@dimen/margin"
                 android:layout_marginTop="@dimen/margin"
                 android:background="@drawable/rounded_corner"
-                android:text="Freund finden" />
+                android:text="Freund 1" />
 
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:layout_gravity="top|center"
+                android:layout_marginEnd="@dimen/margin"
+                android:layout_marginStart="@dimen/margin"
                 android:layout_marginTop="@dimen/margin"
                 android:background="@drawable/rounded_corner"
-                android:text="Freund finden" />
+                android:text="Freund 1" />
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_gravity="top|center"
+                android:layout_marginEnd="@dimen/margin"
+                android:layout_marginStart="@dimen/margin"
+                android:layout_marginTop="@dimen/margin"
+                android:background="@drawable/rounded_corner"
+                android:text="Freund 1" />
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_gravity="top|center"
+                android:layout_marginEnd="@dimen/margin"
+                android:layout_marginStart="@dimen/margin"
+                android:layout_marginTop="@dimen/margin"
+                android:background="@drawable/rounded_corner"
+                android:text="Freund 1" />
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_gravity="top|center"
+                android:layout_marginEnd="@dimen/margin"
+                android:layout_marginStart="@dimen/margin"
+                android:layout_marginTop="@dimen/margin"
+                android:background="@drawable/rounded_corner"
+                android:text="Freund 1" />
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_gravity="top|center"
+                android:layout_marginEnd="@dimen/margin"
+                android:layout_marginStart="@dimen/margin"
+                android:layout_marginTop="@dimen/margin"
+                android:background="@drawable/rounded_corner"
+                android:text="Freund 1" />
 
         </LinearLayout>
-
     </ScrollView>
 </LinearLayout>

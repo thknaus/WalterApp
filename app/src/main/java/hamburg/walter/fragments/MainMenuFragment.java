@@ -63,7 +63,7 @@ public class MainMenuFragment extends AppCompatActivity implements View.OnClickL
                 startActivity(new Intent(MainMenuFragment.this, JoinGameFragment.class));
                 break;
             case R.id.button_friends:
-                startActivity(new Intent(MainMenuFragment.this, FriendsAddNewFragment.class));
+                startActivity(new Intent(MainMenuFragment.this, FriendsFragment.class));
                 break;
             case R.id.button_gamesettings:
                 startActivity(new Intent(MainMenuFragment.this, GameSettingsFragment.class));
