@@ -36,7 +36,7 @@ public class RegisterFragment extends Activity {
 
         email = (EditText)findViewById(R.id.registermail);
         password = (EditText)findViewById(R.id.registerpw);
-        register = (Button)findViewById(R.id.button_register);
+        register = (Button)findViewById(R.id.button_newregister);
         login = (Button)findViewById(R.id.button_loginregister);
 
         login.setOnClickListener(new View.OnClickListener(){

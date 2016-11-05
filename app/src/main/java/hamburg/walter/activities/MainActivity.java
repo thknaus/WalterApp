@@ -12,7 +12,9 @@ import android.widget.Toast;
 
 import hamburg.walter.R;
 import hamburg.walter.data.Store;
+import hamburg.walter.fragments.LoginFragment;
 import hamburg.walter.fragments.MainMenuFragment;
+import hamburg.walter.fragments.RegisterFragment;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -31,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                startActivity(new Intent(MainActivity.this, MainMenuFragment.class));
+                startActivity(new Intent(MainActivity.this, LoginFragment.class));
             }
         },0);
     }

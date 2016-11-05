@@ -26,4 +26,5 @@
     <string name="cancelpw">Cancel</string>
     <string name="requestnewpw">Request New Password</string>
     <string name="requestnewpwcode">Request New Password Code</string>
+    <string name="forgotpw">Forgot Password</string>
 </resources>
