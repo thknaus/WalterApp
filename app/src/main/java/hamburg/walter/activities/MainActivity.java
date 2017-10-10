@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import hamburg.walter.R;
 import hamburg.walter.data.Store;
+import hamburg.walter.fragments.LoginFragment;
 import hamburg.walter.fragments.MainMenuFragment;
 
 
@@ -28,13 +29,13 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         Handler handler = new Handler();
-        handler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                startActivity(new Intent(MainActivity.this, MainMenuFragment.class));
-            }
-        },0);
-    }
+    handler.postDelayed(new Runnable() {
+        @Override
+        public void run() {
+            startActivity(new Intent(MainActivity.this, LoginFragment.class));
+        }
+    },0);
+}
 }
 
 

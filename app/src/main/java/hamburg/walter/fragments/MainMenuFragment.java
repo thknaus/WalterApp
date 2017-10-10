@@ -6,8 +6,10 @@ import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
 
 import hamburg.walter.R;
+import hamburg.walter.activities.MainActivity;
 import hamburg.walter.data.Store;
 
 public class MainMenuFragment extends AppCompatActivity implements View.OnClickListener {
@@ -15,7 +17,7 @@ public class MainMenuFragment extends AppCompatActivity implements View.OnClickL
         Store.d("FavoriteFragment", stringableMessage);
     }
 
-    private Button newgameBtn, existingGameBtn, gameSettingBtn, exitGameBtn, joinGameBtn, friendsBtn;
+    private Button newgameBtn, existingGameBtn, gameSettingBtn, exitGameBtn, joinGameBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,14 +28,12 @@ public class MainMenuFragment extends AppCompatActivity implements View.OnClickL
         newgameBtn = (Button) findViewById(R.id.button_newgame);
         existingGameBtn = (Button) findViewById(R.id.button_existinggame);
         joinGameBtn = (Button) findViewById(R.id.button_joingame);
-        friendsBtn = (Button) findViewById(R.id.button_friends);
         gameSettingBtn = (Button) findViewById(R.id.button_gamesettings);
         exitGameBtn = (Button) findViewById(R.id.button_exitgame);
 
         newgameBtn.setOnClickListener(this);
         existingGameBtn.setOnClickListener(this);
         joinGameBtn.setOnClickListener(this);
-        friendsBtn.setOnClickListener(this);
         gameSettingBtn.setOnClickListener(this);
         exitGameBtn.setOnClickListener(this);
     }
@@ -61,9 +61,6 @@ public class MainMenuFragment extends AppCompatActivity implements View.OnClickL
                 break;
             case R.id.button_joingame:
                 startActivity(new Intent(MainMenuFragment.this, JoinGameFragment.class));
-                break;
-            case R.id.button_friends:
-                startActivity(new Intent(MainMenuFragment.this, FriendsFragment.class));
                 break;
             case R.id.button_gamesettings:
                 startActivity(new Intent(MainMenuFragment.this, GameSettingsFragment.class));

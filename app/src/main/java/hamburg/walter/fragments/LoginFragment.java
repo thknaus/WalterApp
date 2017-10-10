@@ -1,6 +1,7 @@
 package hamburg.walter.fragments;
 
 import android.app.Dialog;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -11,6 +12,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.loopj.android.http.RequestParams;
+
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONException;
@@ -19,8 +22,11 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
+import cz.msebera.android.httpclient.Header;
 import hamburg.walter.R;
+import hamburg.walter.sync.AsyncClient;
 import hamburg.walter.sync.ServerRequest;
+import hamburg.walter.sync.mJsonHttpResponseHandler;
 
 public class LoginFragment extends AppCompatActivity {
 
@@ -31,13 +37,13 @@ public class LoginFragment extends AppCompatActivity {
     SharedPreferences pref;
     Dialog reset;
     ServerRequest sr;
-
+    Context context;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_login);
         sr = new ServerRequest();
-
+        context = this;
         email = (EditText)findViewById(R.id.loginemail);
         password = (EditText)findViewById(R.id.loginpw);
         login = (Button)findViewById(R.id.button_login);
@@ -63,35 +69,29 @@ public class LoginFragment extends AppCompatActivity {
             public void onClick(View view) {
                 emailtxt = email.getText().toString();
                 passwordtxt = password.getText().toString();
-                params = new ArrayList<NameValuePair>();
-                params.add(new BasicNameValuePair("email", emailtxt));
-                params.add(new BasicNameValuePair("password", passwordtxt));
-                ServerRequest sr = new ServerRequest();
-                JSONObject json = sr.getJSON("http://10.0.2.2:8080/login",params);
-                if(json != null){
-                    try{
-                        String jsonstr = json.getString("response");
-                        if(json.getBoolean("res")){
-                            String token = json.getString("token");
-                            String grav = json.getString("grav");
-                            SharedPreferences.Editor edit = pref.edit();
-                            //Storing Data using SharedPreferences
-                            edit.putString("token", token);
-                            edit.putString("grav", grav);
-                            edit.commit();
-                            Intent mainmenufragment = new Intent(LoginFragment.this,MainMenuFragment.class);
+                RequestParams params = new RequestParams();
+                params.put("username", emailtxt);
+                params.put("password", passwordtxt);
 
-                            startActivity(mainmenufragment);
-                            finish();
+                try{
+                    AsyncClient.post("/login", params, new mJsonHttpResponseHandler(context){
+                        @Override
+                        public void onSuccess(int statusCode, Header[] headers, JSONObject response){
+                            try{
+                                if(response.getInt(context.getString(R.string.server_response)) == 1){
+                                    // Remeberme checkbox
+                                    Toast.makeText(context, response.getString(context.getString(R.string.server_message)), Toast.LENGTH_SHORT).show();
+                                }
+                            } catch (JSONException e){
+                                e.printStackTrace();
+                            }
                         }
-
-                        Toast.makeText(getApplication(),jsonstr,Toast.LENGTH_LONG).show();
-
-                    }catch (JSONException e) {
-                        e.printStackTrace();
-                    }
+                    });
+                }catch(Exception e){
+                    e.printStackTrace();
                 }
-            }
+
+        }
         });
 
         forpass.setOnClickListener(new View.OnClickListener(){
