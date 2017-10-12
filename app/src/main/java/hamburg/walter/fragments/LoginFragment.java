@@ -24,16 +24,18 @@ import java.util.List;
 
 import cz.msebera.android.httpclient.Header;
 import hamburg.walter.R;
+import hamburg.walter.activities.MainActivity;
 import hamburg.walter.sync.AsyncClient;
 import hamburg.walter.sync.ServerRequest;
 import hamburg.walter.sync.mJsonHttpResponseHandler;
 
-public class LoginFragment extends AppCompatActivity {
+public class LoginFragment extends AppCompatActivity implements View.OnClickListener {
 
     EditText email, password, res_email, code, newpass;
-    Button login, cont, cont_code, cancel, cancel1, register, forpass;
+    Button login, cont, cont_code, cancel, cancel1, register, forgotPW;
     String emailtxt, passwordtxt, email_res_txt, code_txt, npass_txt;
-    List<NameValuePair> params;
+
+
     SharedPreferences pref;
     Dialog reset;
     ServerRequest sr;
@@ -44,30 +46,26 @@ public class LoginFragment extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_login);
         sr = new ServerRequest();
+
         context = this;
         email = (EditText) findViewById(R.id.loginemail);
         password = (EditText) findViewById(R.id.loginpw);
-        login = (Button) findViewById(R.id.button_login);
-        register = (Button) findViewById(R.id.button_register);
-        forpass = (Button) findViewById(R.id.button_forgotpw);
+
+        login = (Button) findViewById(R.id.login_btn);
+        register = (Button) findViewById(R.id.register_btn);
+        forgotPW = (Button) findViewById(R.id.forgotpw_btn);
+
+        login.setOnClickListener(this);
+        register.setOnClickListener(this);
+        forgotPW.setOnClickListener(this);
 
         pref = getSharedPreferences("AppPref", MODE_PRIVATE);
+    }
 
-        register.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent regactivity = new Intent(LoginFragment.this, RegisterFragment.class);
-                startActivity(regactivity);
-                finish();
-            }
-        });
-
-
-        login.setOnClickListener(new View.OnClickListener() {
-
-
-            @Override
-            public void onClick(View view) {
+    @Override
+    public void onClick(View view) {
+        switch(view.getId()) {
+            case R.id.login_btn:
                 emailtxt = email.getText().toString();
                 passwordtxt = password.getText().toString();
                 RequestParams params = new RequestParams();
@@ -91,13 +89,13 @@ public class LoginFragment extends AppCompatActivity {
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
-
-            }
-        });
-
-        forpass.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+                break;
+            case R.id.register_btn:
+                Intent regactivity = new Intent(LoginFragment.this, RegisterFragment.class);
+                startActivity(regactivity);
+                finish();
+                break;
+            case R.id.forgotpw_btn:
                 reset = new Dialog(LoginFragment.this);
                 reset.setTitle("Reset Password");
                 reset.setContentView(R.layout.fragment_resetpw);
@@ -116,7 +114,7 @@ public class LoginFragment extends AppCompatActivity {
                     public void onClick(View view) {
                         email_res_txt = res_email.getText().toString();
 
-                        params = new ArrayList<NameValuePair>();
+                        List<NameValuePair> params = new ArrayList<NameValuePair>();
                         params.add(new BasicNameValuePair("email", email_res_txt));
 
                         //  JSONObject json = sr.getJSON("http://192.168.56.1:8080/api/resetpass", params);
@@ -146,7 +144,7 @@ public class LoginFragment extends AppCompatActivity {
                                             npass_txt = newpass.getText().toString();
                                             Log.e("Code", code_txt);
                                             Log.e("New pass", npass_txt);
-                                            params = new ArrayList<NameValuePair>();
+                                            List<NameValuePair> params = new ArrayList<NameValuePair>();
                                             params.add(new BasicNameValuePair("email", email_res_txt));
                                             params.add(new BasicNameValuePair("code", code_txt));
                                             params.add(new BasicNameValuePair("newpass", npass_txt));
@@ -178,7 +176,7 @@ public class LoginFragment extends AppCompatActivity {
                     }
                 });
                 reset.show();
-            }
-        });
+                break;
+        }
     }
 }

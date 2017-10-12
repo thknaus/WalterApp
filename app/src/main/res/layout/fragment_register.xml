@@ -2,6 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorPrimaryDark"
     android:orientation="vertical">
 
     <EditText
@@ -12,11 +13,11 @@
         android:layout_marginStart="@dimen/margin"
         android:layout_marginTop="@dimen/margin"
         android:background="@drawable/frame_inputtext"
-        android:hint="example@mail.com"
+        android:hint="@string/email"
         android:padding="@dimen/margin"
         android:textColor="@color/colorPrimary"
         android:textColorHint="@color/colorPrimary"
-        android:textSize="@dimen/margin" />
+        android:textSize="@dimen/text_size" />
 
     <EditText
         android:id="@+id/registerpw"
@@ -30,20 +31,12 @@
         android:padding="@dimen/margin"
         android:textColor="@color/colorPrimary"
         android:textColorHint="@color/colorPrimary"
-        android:textSize="@dimen/margin" />
+        android:textSize="@dimen/text_size" />
 
     <Button
-        android:id="@+id/button_newregister"
+        android:id="@+id/register_btn"
         style="@style/Button_Large_Long"
         android:layout_gravity="center"
         android:layout_marginTop="@dimen/margin"
         android:text="@string/register" />
-
-    <Button
-        android:id="@+id/button_loginregister"
-        style="@style/Button_Large_Long"
-        android:layout_gravity="center"
-        android:layout_marginTop="@dimen/margin"
-        android:text="@string/login" />
-
 </LinearLayout>

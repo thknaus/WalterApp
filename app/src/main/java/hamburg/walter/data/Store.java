@@ -7,8 +7,9 @@ import hamburg.walter.BuildConfig;
 
 public class Store {
 
-    private final static boolean DEBUG = BuildConfig.DEBUG;
+    private static final String PRODUCTION_URL = "http://10.0.2.2:8080/api/resetpass";
 
+    private final static boolean DEBUG = BuildConfig.DEBUG;
     public static void d(String name, Object... stringableMessage) {
         if (DEBUG) {
             StringBuilder s = new StringBuilder();
@@ -19,6 +20,10 @@ public class Store {
 
             Log.d("Walter", s.toString());
         }
+    }
+
+    private Store() {
+        if
     }
 }
 
