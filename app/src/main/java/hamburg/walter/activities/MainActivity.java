@@ -22,20 +22,18 @@ public class MainActivity extends AppCompatActivity {
         Store.d("MainActivity", stringableMessage);
     }
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         Handler handler = new Handler();
-    handler.postDelayed(new Runnable() {
-        @Override
-        public void run() {
-            startActivity(new Intent(MainActivity.this, LoginFragment.class));
-        }
-    },0);
-}
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                startActivity(new Intent(MainActivity.this, LoginFragment.class));
+            }
+        }, 0);
+    }
 }
 
 
