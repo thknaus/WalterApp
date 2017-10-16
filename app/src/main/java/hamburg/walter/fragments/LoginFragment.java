@@ -81,6 +81,10 @@ public class LoginFragment extends AppCompatActivity {
                                 if(response.getInt(context.getString(R.string.server_response)) == 1){
                                     // Remeberme checkbox
                                     Toast.makeText(context, response.getString(context.getString(R.string.server_message)), Toast.LENGTH_SHORT).show();
+                                }else if(response.getInt(context.getString(R.string.server_message)) == 0){
+                                    Toast.makeText(context, response.getString(context.getString(R.string.server_message)), Toast.LENGTH_SHORT).show();
+                                }else{
+                                    Toast.makeText(context, "Fehler", Toast.LENGTH_SHORT).show();
                                 }
                             } catch (JSONException e){
                                 e.printStackTrace();
