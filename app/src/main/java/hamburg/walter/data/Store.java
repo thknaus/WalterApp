@@ -21,9 +21,5 @@ public class Store {
             Log.d("Walter", s.toString());
         }
     }
-
-    private Store() {
-        if
-    }
 }
 

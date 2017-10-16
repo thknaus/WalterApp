@@ -42,10 +42,10 @@ public class AsyncClient {
     public static void doOnFailure(Context context, int errorCode){
         switch (errorCode){
             case 0:
-                Toast.makeText(context, R.string.code_0, Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, "No server connection. Try again.", Toast.LENGTH_SHORT).show();
                 break;
             case 404:
-                Toast.makeText(context, R.string.code_404, Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, R.string.code_404 + "No server connection. Try again.", Toast.LENGTH_SHORT).show();
                 break;
         }
     }
