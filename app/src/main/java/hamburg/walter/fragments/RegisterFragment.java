@@ -19,13 +19,9 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by Thomas on 30.10.2016.
- */
-
-public class RegisterFragment extends Activity {
+public class RegisterFragment extends Activity implements View.OnClickListener{
     EditText email, password;
-    Button login, register;
+    Button register;
     String emailtxt, passwordtxt;
     List<NameValuePair> params;
 
@@ -36,21 +32,13 @@ public class RegisterFragment extends Activity {
 
         email = (EditText)findViewById(R.id.registermail);
         password = (EditText)findViewById(R.id.registerpw);
-        register = (Button)findViewById(R.id.button_register);
-        login = (Button)findViewById(R.id.button_loginregister);
+        register = (Button)findViewById(R.id.register_btn);
+    }
 
-        login.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View view){
-                Intent regfragment = new Intent(RegisterFragment.this, LoginFragment.class);
-                startActivity(regfragment);
-                finish();
-            }
-        });
-
-        register.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+    @Override
+    public void onClick(View view) {
+        switch(view.getId()) {
+            case R.id.register_btn:
                 emailtxt = email.getText().toString();
                 passwordtxt = password.getText().toString();
                 params = new ArrayList<NameValuePair>();
@@ -69,7 +57,7 @@ public class RegisterFragment extends Activity {
                         e.printStackTrace();
                     }
                 }
-            }
-        });
+                break;
+        }
     }
 }
