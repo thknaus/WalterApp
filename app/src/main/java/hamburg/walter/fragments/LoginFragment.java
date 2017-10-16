@@ -64,7 +64,7 @@ public class LoginFragment extends AppCompatActivity implements View.OnClickList
 
     @Override
     public void onClick(View view) {
-        switch(view.getId()) {
+        switch (view.getId()) {
             case R.id.login_btn:
                 emailtxt = email.getText().toString();
                 passwordtxt = password.getText().toString();
@@ -72,27 +72,23 @@ public class LoginFragment extends AppCompatActivity implements View.OnClickList
                 params.put("username", emailtxt);
                 params.put("password", passwordtxt);
 
-                try {
-                    AsyncClient.post("/login", params, new mJsonHttpResponseHandler(context) {
-                        @Override
-                        public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
-                            try {
-                                if (response.getInt(context.getString(R.string.server_response)) == 1) {
-                                    // Remeberme checkbox
-                                    Toast.makeText(context, response.getString(context.getString(R.string.server_message)), Toast.LENGTH_SHORT).show();
-                                }else if(response.getInt(context.getString(R.string.server_message)) == 0){
-                                    Toast.makeText(context, response.getString(context.getString(R.string.server_message)), Toast.LENGTH_SHORT).show();
-                                }else{
-                                    Toast.makeText(context, "Fehler", Toast.LENGTH_SHORT).show();
-                                }
-                            } catch (JSONException e) {
-                                e.printStackTrace();
+                AsyncClient.post("/login", params, new mJsonHttpResponseHandler(context) {
+                    @Override
+                    public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+                        try {
+                            if (response.getInt("SERVER_RESPONSE") == 1) {
+                                // Remeberme checkbox
+                                Toast.makeText(context, response.getString("SERVER_MESSAGE"), Toast.LENGTH_SHORT).show();
+                            } else if (response.getInt(context.getString(R.string.server_message)) == 1) {
+                                Toast.makeText(context, response.getString("SERVER_MESSAGE"), Toast.LENGTH_SHORT).show();
+                            } else {
+                                Toast.makeText(context, "Fehler", Toast.LENGTH_SHORT).show();
                             }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
                         }
-                    });
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
+                    }
+                });
                 break;
             case R.id.register_btn:
                 Intent regactivity = new Intent(LoginFragment.this, RegisterFragment.class);
