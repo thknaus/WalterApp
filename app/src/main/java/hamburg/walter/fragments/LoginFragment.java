@@ -60,6 +60,11 @@ public class LoginFragment extends AppCompatActivity implements View.OnClickList
         forgotPW.setOnClickListener(this);
 
         pref = getSharedPreferences("AppPref", MODE_PRIVATE);
+
+        String username = getIntent().getStringExtra("USER_NAME");
+        if(username != null){
+            email.setText(username);
+        }
     }
 
     @Override
@@ -77,12 +82,14 @@ public class LoginFragment extends AppCompatActivity implements View.OnClickList
                     public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                         try {
                             if (response.getInt("SERVER_RESPONSE") == 1) {
-                                // Remeberme checkbox
-                                Toast.makeText(context, response.getString("SERVER_MESSAGE"), Toast.LENGTH_SHORT).show();
+                                //Toast.makeText(context, response.getString("SERVER_MESSAGE"), Toast.LENGTH_SHORT).show();
+                                Intent mainMenuFragment = new Intent(LoginFragment.this, MainMenuFragment.class);
+                                startActivity(mainMenuFragment);
+
                             } else if (response.getInt(context.getString(R.string.server_message)) == 1) {
                                 Toast.makeText(context, response.getString("SERVER_MESSAGE"), Toast.LENGTH_SHORT).show();
                             } else {
-                                Toast.makeText(context, "Error in User Create", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(context, R.string.loginfailed, Toast.LENGTH_SHORT).show();
                             }
                         } catch (JSONException e) {
                             e.printStackTrace();

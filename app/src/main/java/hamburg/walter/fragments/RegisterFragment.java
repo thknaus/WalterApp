@@ -20,6 +20,7 @@ import hamburg.walter.sync.mJsonHttpResponseHandler;
 
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -27,6 +28,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RegisterFragment extends Activity implements View.OnClickListener{
+    private static String TAG = "RegisterFragment";
+
     EditText email, password;
     Button register;
     String emailtxt, passwordtxt;
@@ -61,8 +64,16 @@ public class RegisterFragment extends Activity implements View.OnClickListener{
                     public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                         try{
                             if(!(response.getString("SERVER_MESSAGE") == null)){
+
+                                String s = response.getString("SERVER_MESSAGE");
                                 Toast.makeText(context, R.string.registered, Toast.LENGTH_SHORT).show();
-                                onBackPressed();
+
+                                Log.v(TAG, "Created user: "+ emailtxt);
+                                Intent loginactivity = new Intent(RegisterFragment.this, LoginFragment.class);
+                                loginactivity.putExtra("USER_NAME", s);
+                                startActivity(loginactivity);
+                                //onBackPressed();
+                                finish();
                             }
 
                         }catch(JSONException e){
