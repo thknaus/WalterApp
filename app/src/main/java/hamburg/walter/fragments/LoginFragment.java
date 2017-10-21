@@ -82,7 +82,7 @@ public class LoginFragment extends AppCompatActivity implements View.OnClickList
                             } else if (response.getInt(context.getString(R.string.server_message)) == 1) {
                                 Toast.makeText(context, response.getString("SERVER_MESSAGE"), Toast.LENGTH_SHORT).show();
                             } else {
-                                Toast.makeText(context, "Fehler", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(context, "Error in User Create", Toast.LENGTH_SHORT).show();
                             }
                         } catch (JSONException e) {
                             e.printStackTrace();

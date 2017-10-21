@@ -30,7 +30,6 @@ public class RegisterFragment extends Activity implements View.OnClickListener{
     EditText email, password;
     Button register;
     String emailtxt, passwordtxt;
-    List<NameValuePair> params;
     Context context;
 
     @Override
@@ -55,15 +54,15 @@ public class RegisterFragment extends Activity implements View.OnClickListener{
                 passwordtxt = password.getText().toString();
 
                 RequestParams params = new RequestParams();
-                params.put("username", emailtxt);
+                params.put("email", emailtxt);
                 params.put("password", passwordtxt);
                 AsyncClient.post("/signup", params, new mJsonHttpResponseHandler(this){
                     @Override
                     public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                         try{
-
-                            if(response.getString("User") == null){
-                                Toast.makeText(context, "New User created.", Toast.LENGTH_SHORT).show();
+                            if(!(response.getString("SERVER_MESSAGE") == null)){
+                                Toast.makeText(context, R.string.registered, Toast.LENGTH_SHORT).show();
+                                onBackPressed();
                             }
 
                         }catch(JSONException e){
@@ -74,5 +73,9 @@ public class RegisterFragment extends Activity implements View.OnClickListener{
                 });
                 break;
         }
+    }
+    @Override
+    public void onBackPressed(){
+        moveTaskToBack(true);
     }
 }
