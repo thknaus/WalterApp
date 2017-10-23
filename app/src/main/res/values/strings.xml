@@ -30,6 +30,9 @@
     <string name="code_0">0</string>
     <string name="server_response">1</string>
     <string name="server_message">Successfully connected</string>
-    <string name="registered">\"Successfully registered\"</string>
+    <string name="registered">Successfully registered</string>
     <string name="loginfailed">Login failed. Try again!</string>
+    <string name="gamename">Name der neuen Runde.</string>
+    <string name="startgame">Spiel starten</string>
+    <string name="startgameback">Zurück</string>
 </resources>

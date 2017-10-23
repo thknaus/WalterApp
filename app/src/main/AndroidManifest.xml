@@ -33,6 +33,8 @@
             android:label="@string/login"/>
         <activity android:name=".fragments.RegisterFragment"
             android:label="@string/register"/>
+        <activity android:name=".fragments.NewGameLobbyFragment"
+            android:label="@string/newGame"/>
     </application>
 
 </manifest>

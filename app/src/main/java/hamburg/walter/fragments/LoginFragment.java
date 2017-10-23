@@ -40,6 +40,7 @@ public class LoginFragment extends AppCompatActivity implements View.OnClickList
     Dialog reset;
     ServerRequest sr;
     Context context;
+    String player;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -85,6 +86,7 @@ public class LoginFragment extends AppCompatActivity implements View.OnClickList
                                 //Toast.makeText(context, response.getString("SERVER_MESSAGE"), Toast.LENGTH_SHORT).show();
                                 Intent mainMenuFragment = new Intent(LoginFragment.this, MainMenuFragment.class);
                                 startActivity(mainMenuFragment);
+                                finish();
 
                             } else if (response.getInt(context.getString(R.string.server_message)) == 1) {
                                 Toast.makeText(context, response.getString("SERVER_MESSAGE"), Toast.LENGTH_SHORT).show();
@@ -122,8 +124,6 @@ public class LoginFragment extends AppCompatActivity implements View.OnClickList
 
                     }
                 });
-
-
 
                 reset.show();
                 break;

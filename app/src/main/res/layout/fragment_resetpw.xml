@@ -2,19 +2,21 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
+
     <EditText
         android:id="@+id/resetpw_email"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Email"
-        android:padding="@dimen/margin"
-        android:background="@drawable/frame_inputtext"
-        android:textColor="@color/colorPrimary"
-        android:textSize="@dimen/margin"
-        android:textColorHint="@color/colorPrimary"
-        android:layout_marginTop="@dimen/margin"
+        android:layout_marginEnd="@dimen/margin"
         android:layout_marginStart="@dimen/margin"
-        android:layout_marginEnd="@dimen/margin"/>
+        android:layout_marginTop="@dimen/margin"
+        android:background="@drawable/frame_inputtext"
+        android:hint="Email"
+        android:inputType="textEmailAddress"
+        android:padding="@dimen/margin"
+        android:textColor="@color/colorPrimary"
+        android:textColorHint="@color/colorPrimary"
+        android:textSize="@dimen/margin" />
     <Button
         android:id="@+id/button_resetpw_continue"
         style="@style/Button_Large_Long"
