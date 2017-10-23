@@ -3,6 +3,7 @@ package hamburg.walter.fragments;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -54,5 +55,12 @@ public class PasswordResetFragment extends Activity implements View.OnClickListe
                 }
                 break;
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent loginfragment = new Intent(PasswordResetFragment.this, LoginFragment.class);
+        startActivity(loginfragment);
+        finish();
     }
 }
