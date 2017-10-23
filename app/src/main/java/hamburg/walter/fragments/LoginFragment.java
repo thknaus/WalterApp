@@ -98,34 +98,14 @@ public class LoginFragment extends AppCompatActivity implements View.OnClickList
                 });
                 break;
             case R.id.register_btn:
-                Intent regactivity = new Intent(LoginFragment.this, RegisterFragment.class);
-                startActivity(regactivity);
+                Intent registerFragment = new Intent(LoginFragment.this, RegisterFragment.class);
+                startActivity(registerFragment);
                 finish();
                 break;
             case R.id.forgotpw_btn:
-                reset = new Dialog(LoginFragment.this);
-                reset.setTitle("Reset Password");
-                reset.setContentView(R.layout.fragment_resetpw);
-                cont = (Button) reset.findViewById(R.id.button_resetpw_continue);
-                cancel = (Button) reset.findViewById(R.id.button_resetpw_cancel);
-                cancel.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        reset.dismiss();
-                    }
-                });
-                res_email = (EditText) reset.findViewById(R.id.resetpw_email);
-
-                cont.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-
-                    }
-                });
-
-
-
-                reset.show();
+                Intent passwordresetfragment = new Intent(LoginFragment.this, PasswordResetFragment.class);
+                startActivity(passwordresetfragment);
+                finish();
                 break;
         }
     }

@@ -23,7 +23,9 @@
     <string name="cancelpw">Cancel</string>
     <string name="requestnewpw">Request New Password</string>
     <string name="requestnewpwcode">Request New Password Code</string>
-    <string name="forgotpw">Forgot Password</string>
+    <string name="forgotpw">Passwort vergessen</string>
+    <string name="forgotpw_message">Bitte geben Sie ihre E-Mail-Adresse an.</string>
+    <string name="request_new_password">Neues Password anfordern</string>
     <string name="name">Name</string>
     <string name="email">E-Mail</string>
     <string name="code_404">404</string>
@@ -32,4 +34,7 @@
     <string name="server_message">Successfully connected</string>
     <string name="registered">\"Successfully registered\"</string>
     <string name="loginfailed">Login failed. Try again!</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
