@@ -35,6 +35,8 @@
             android:label="@string/register"/>
         <activity android:name=".fragments.PasswordResetFragment"
             android:label="@string/request_new_password"/>
+        <activity android:name=".fragments.NewGameLobbyFragment"
+            android:label="@string/newGame"/>
     </application>
 
 </manifest>
