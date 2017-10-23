@@ -119,69 +119,12 @@ public class LoginFragment extends AppCompatActivity implements View.OnClickList
                 cont.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        email_res_txt = res_email.getText().toString();
 
-                        List<NameValuePair> params = new ArrayList<NameValuePair>();
-                        params.add(new BasicNameValuePair("email", email_res_txt));
-
-                        //  JSONObject json = sr.getJSON("http://192.168.56.1:8080/api/resetpass", params);
-                        JSONObject json = sr.getJSON("http://10.0.2.2:8080/api/resetpass", params);
-
-                        if (json != null) {
-                            try {
-                                String jsonstr = json.getString("response");
-                                if (json.getBoolean("res")) {
-                                    Log.e("JSON", jsonstr);
-                                    Toast.makeText(getApplication(), jsonstr, Toast.LENGTH_LONG).show();
-                                    reset.setContentView(R.layout.fragment_resetpw_code);
-                                    cont_code = (Button) reset.findViewById(R.id.button_resetpw_change);
-                                    code = (EditText) reset.findViewById(R.id.resetpw_code);
-                                    newpass = (EditText) reset.findViewById(R.id.new_pw);
-                                    cancel1 = (Button) reset.findViewById(R.id.button_resetpw_cancelcode);
-                                    cancel1.setOnClickListener(new View.OnClickListener() {
-                                        @Override
-                                        public void onClick(View view) {
-                                            reset.dismiss();
-                                        }
-                                    });
-                                    cont_code.setOnClickListener(new View.OnClickListener() {
-                                        @Override
-                                        public void onClick(View view) {
-                                            code_txt = code.getText().toString();
-                                            npass_txt = newpass.getText().toString();
-                                            Log.e("Code", code_txt);
-                                            Log.e("New pass", npass_txt);
-                                            List<NameValuePair> params = new ArrayList<NameValuePair>();
-                                            params.add(new BasicNameValuePair("email", email_res_txt));
-                                            params.add(new BasicNameValuePair("code", code_txt));
-                                            params.add(new BasicNameValuePair("newpass", npass_txt));
-
-                                            JSONObject json = sr.getJSON("http://10.0.2.2:8080/api/resetpass/chg", params);
-                                            //   JSONObject json = sr.getJSON("http://192.168.56.1:8080/api/resetpass/chg", params);
-                                            if (json != null) {
-                                                try {
-                                                    String jsonstr = json.getString("response");
-                                                    if (json.getBoolean("res")) {
-                                                        reset.dismiss();
-                                                        Toast.makeText(getApplication(), jsonstr, Toast.LENGTH_LONG).show();
-                                                    } else {
-                                                        Toast.makeText(getApplication(), jsonstr, Toast.LENGTH_LONG).show();
-                                                    }
-                                                } catch (JSONException e) {
-                                                    e.printStackTrace();
-                                                }
-                                            }
-                                        }
-                                    });
-                                } else {
-                                    Toast.makeText(getApplication(), jsonstr, Toast.LENGTH_LONG).show();
-                                }
-                            } catch (JSONException e) {
-                                e.printStackTrace();
-                            }
-                        }
                     }
                 });
+
+
+
                 reset.show();
                 break;
         }

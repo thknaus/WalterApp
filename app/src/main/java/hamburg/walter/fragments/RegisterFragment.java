@@ -3,6 +3,7 @@ package hamburg.walter.fragments;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -30,6 +31,7 @@ import java.util.List;
 public class RegisterFragment extends Activity implements View.OnClickListener{
     private static String TAG = "RegisterFragment";
 
+    SharedPreferences pref;
     EditText email, password;
     Button register;
     String emailtxt, passwordtxt;
@@ -40,6 +42,8 @@ public class RegisterFragment extends Activity implements View.OnClickListener{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_register);
         context = this;
+
+        pref = getSharedPreferences("AppPref", MODE_PRIVATE);
 
         email = (EditText)findViewById(R.id.registermail);
         password = (EditText)findViewById(R.id.registerpw);
