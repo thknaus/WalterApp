@@ -16,6 +16,7 @@ import com.loopj.android.http.RequestParams;
 
 import cz.msebera.android.httpclient.Header;
 import hamburg.walter.R;
+import hamburg.walter.data.User;
 import hamburg.walter.sync.AsyncClient;
 import hamburg.walter.sync.ServerRequest;
 import hamburg.walter.sync.mJsonHttpResponseHandler;
@@ -37,6 +38,7 @@ public class RegisterFragment extends Activity implements View.OnClickListener{
     Button register;
     String emailtxt, passwordtxt;
     Context context;
+
 
     @Override
     public void onCreate(Bundle savedInstanceState){
@@ -75,7 +77,7 @@ public class RegisterFragment extends Activity implements View.OnClickListener{
 
                                 Log.v(TAG, "Created user: "+ emailtxt);
                                 Intent loginactivity = new Intent(RegisterFragment.this, LoginFragment.class);
-                                loginactivity.putExtra("USER_NAME", s);
+                                loginactivity.putExtra("USER_EMAIL", s);
                                 startActivity(loginactivity);
                                 //onBackPressed();
                                 finish();

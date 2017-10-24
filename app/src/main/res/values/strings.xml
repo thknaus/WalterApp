@@ -10,7 +10,7 @@
     <string name="yeas">Ja</string>
     <string name="no">Nein</string>
     <string name="dialog_exit">Spiel beenden?</string>
-    <string name="playername">XX</string>
+    <string name="playername">Wähle einen Namen</string>
     <string name="yourplayername">X you X</string>
     <string name="addplayer">Spieler hinzufuegen</string>
     <string name="invite_friend">Freund einladen</string>

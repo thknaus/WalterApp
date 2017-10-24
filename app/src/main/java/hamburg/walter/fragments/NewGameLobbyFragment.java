@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import com.loopj.android.http.RequestParams;
 
@@ -14,6 +15,7 @@ import org.json.JSONObject;
 
 import cz.msebera.android.httpclient.Header;
 import hamburg.walter.R;
+import hamburg.walter.data.Game;
 import hamburg.walter.sync.AsyncClient;
 import hamburg.walter.sync.mJsonHttpResponseHandler;
 
@@ -25,6 +27,10 @@ public class NewGameLobbyFragment extends AppCompatActivity implements View.OnCl
 
     EditText gameName;
     Button startBtn, backBtn;
+    TextView gameId;
+
+    Game game;
+
     Context context;
     String player;
 
@@ -32,9 +38,14 @@ public class NewGameLobbyFragment extends AppCompatActivity implements View.OnCl
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
 
+        setContentView(R.layout.fragment_newgamelobby);
         context = this;
 
-        gameName = (EditText)findViewById(R.id.gamename_text);
+        game = game.getInstance();
+
+        gameId = (TextView)findViewById(R.id.game_id);
+
+        gameName = (EditText)findViewById(R.id.text_gamename);
         startBtn = (Button)findViewById(R.id.button_startgame);
         backBtn = (Button)findViewById(R.id.button_startgameback);
 
@@ -49,7 +60,15 @@ public class NewGameLobbyFragment extends AppCompatActivity implements View.OnCl
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.button_startgame:
-                RequestParams params = new RequestParams();
+                if(gameName.toString().equals("")){
+                    /*
+                        TODO: Show Snackbar
+                     */
+                    break;
+                }
+                game.setGameName(gameName.toString());
+
+/*                RequestParams params = new RequestParams();
                 params.put("gamesession", gameName.getText());
 
                 AsyncClient.post("/login", params, new mJsonHttpResponseHandler(context){
@@ -63,7 +82,7 @@ public class NewGameLobbyFragment extends AppCompatActivity implements View.OnCl
 
                         }
                     }
-                });
+                });*/
                 break;
             case R.id.button_startgameback:
                 break;

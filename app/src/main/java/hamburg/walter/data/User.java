@@ -1,19 +1,41 @@
 package hamburg.walter.data;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
 public class User {
     private JSONObject jsonObject = null;
-    public String firstname = "", lastname = "";
-    public int _id = -1;
+    private String email = "";
+    private String _id = "";
+    private String name = "";
 
-    public User(JSONObject jsonObject) {
-        this.jsonObject = jsonObject;
+    private static final User user = new User();
 
-        if (jsonObject != null) {
-            _id = jsonObject.optInt("_id", -1);
-            firstname = jsonObject.optString("firstname", "");
-            lastname = jsonObject.optString("lastname", "");
+    public User(){}
+
+    public static User getInstance(){
+        return user;
+    }
+
+    public String getEmail(){
+        return email;
+    }
+    public String getID(){
+        return _id;
+    }
+    public void setUserData(JSONObject obj){
+        try{
+            email = obj.getString("email");
+            _id = obj.getString("id");
+        }catch(JSONException e){
+
         }
     }
+    public String getName(){
+        return name;
+    }
+    public void setName(String n){
+        name = n;
+    }
+
 }

@@ -17,14 +17,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        Handler handler = new Handler();
-        handler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                startActivity(new Intent(MainActivity.this, LoginFragment.class));
-            }
-        }, 0);
+        startActivity(new Intent(MainActivity.this, LoginFragment.class));
     }
 }
 

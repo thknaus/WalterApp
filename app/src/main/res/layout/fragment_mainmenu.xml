@@ -4,6 +4,18 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+    <EditText
+        android:id="@+id/text_playername"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/margin"
+        android:layout_marginRight="@dimen/margin"
+        android:layout_marginTop="@dimen/margin_big_big"
+        android:ems="10"
+        android:hint="@string/playername"
+        android:inputType="textPersonName"
+        android:textAlignment="center" />
+
     <Button
         android:id="@+id/button_newgame"
         style="@style/Button_Large_Long"
@@ -12,25 +24,11 @@
         android:text="@string/newGame" />
 
     <Button
-        android:id="@+id/button_existinggame"
-        style="@style/Button_Large_Long"
-        android:layout_gravity="center"
-        android:layout_marginTop="@dimen/margin"
-        android:text="@string/existingGame" />
-
-    <Button
         android:id="@+id/button_joingame"
         style="@style/Button_Large_Long"
         android:layout_gravity="center"
         android:layout_marginTop="@dimen/margin"
         android:text="@string/joinGame" />
-
-    <Button
-        android:id="@+id/button_gamesettings"
-        style="@style/Button_Large_Long"
-        android:layout_gravity="center"
-        android:layout_marginTop="@dimen/margin"
-        android:text="@string/gameSettings" />
 
     <Button
         android:id="@+id/button_exitgame"

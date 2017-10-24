@@ -25,20 +25,21 @@ import java.util.List;
 import cz.msebera.android.httpclient.Header;
 import hamburg.walter.R;
 import hamburg.walter.activities.MainActivity;
+import hamburg.walter.data.User;
 import hamburg.walter.sync.AsyncClient;
 import hamburg.walter.sync.ServerRequest;
 import hamburg.walter.sync.mJsonHttpResponseHandler;
 
 public class LoginFragment extends AppCompatActivity implements View.OnClickListener {
 
-    EditText email, password, res_email, code, newpass;
-    Button login, cont, cont_code, cancel, cancel1, register, forgotPW;
-    String emailtxt, passwordtxt, email_res_txt, code_txt, npass_txt;
+    EditText emailTxt, password;
+    Button login, register, forgotPW;
+    String emailtxt, passwordtxt;
 
+    User user;
 
     SharedPreferences pref;
     Dialog reset;
-    ServerRequest sr;
     Context context;
     String player;
 
@@ -46,10 +47,11 @@ public class LoginFragment extends AppCompatActivity implements View.OnClickList
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_login);
-        sr = new ServerRequest();
+
+        user = user.getInstance();
 
         context = this;
-        email = (EditText) findViewById(R.id.loginemail);
+        emailTxt = (EditText) findViewById(R.id.loginemail);
         password = (EditText) findViewById(R.id.loginpw);
 
         login = (Button) findViewById(R.id.login_btn);
@@ -62,9 +64,9 @@ public class LoginFragment extends AppCompatActivity implements View.OnClickList
 
         pref = getSharedPreferences("AppPref", MODE_PRIVATE);
 
-        String username = getIntent().getStringExtra("USER_NAME");
-        if(username != null){
-            email.setText(username);
+        String email = getIntent().getStringExtra("USER_EMAIL");
+        if(email != null){
+            emailTxt.setText(email);
         }
     }
 
@@ -72,7 +74,7 @@ public class LoginFragment extends AppCompatActivity implements View.OnClickList
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.login_btn:
-                emailtxt = email.getText().toString();
+                emailtxt = emailTxt.getText().toString();
                 passwordtxt = password.getText().toString();
                 RequestParams params = new RequestParams();
                 params.put("username", emailtxt);
@@ -83,7 +85,7 @@ public class LoginFragment extends AppCompatActivity implements View.OnClickList
                     public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                         try {
                             if (response.getInt("SERVER_RESPONSE") == 1) {
-                                //Toast.makeText(context, response.getString("SERVER_MESSAGE"), Toast.LENGTH_SHORT).show();
+                                user.setUserData(response.getJSONObject("SERVER_MESSAGE"));
                                 Intent mainMenuFragment = new Intent(LoginFragment.this, MainMenuFragment.class);
                                 startActivity(mainMenuFragment);
                                 finish();
