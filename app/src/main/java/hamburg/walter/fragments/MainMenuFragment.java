@@ -69,39 +69,38 @@ public class MainMenuFragment extends AppCompatActivity implements View.OnClickL
         switch (v.getId()) {
             case R.id.button_newgame:
                 if(playerNameTxt.getText().equals("")){
-                    //Snackbar Name wählen
+                    /*
+                    TODO: Snackbar choose playername
+                     */
                     break;
                 }
                 user.setName(playerNameTxt.getText().toString());
 
-                /*
-                    TODO: Create new game session on server, get game session id and save in Game
-                 */
-
                 game = game.getInstance();
- /*                RequestParams params = new RequestParams();
+                RequestParams params = new RequestParams();
+                params.put("hostuser", user.getID());
 
-
-                AsyncClient.post("/login", params, new mJsonHttpResponseHandler(context) {
+                AsyncClient.post("/newgame", params, new mJsonHttpResponseHandler(context) {
                     @Override
                     public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                         try {
                             if (response.getInt("SERVER_RESPONSE") == 1) {
+                                game.setGameSessionId(response.getString("SERVER_MESSAGE"));
+
                                 startActivity(new Intent(MainMenuFragment.this, NewGameLobbyFragment.class));
                                 finish();
-
-                            } else if (response.getInt(context.getString(R.string.server_message)) == 1) {
-                                Toast.makeText(context, response.getString("SERVER_MESSAGE"), Toast.LENGTH_SHORT).show();
                             } else {
+                                /*
+                                    TODO: Snackbar throw error in game create
+                                 */
                                 Toast.makeText(context, R.string.loginfailed, Toast.LENGTH_SHORT).show();
                             }
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
                     }
-                });*/
-                startActivity(new Intent(MainMenuFragment.this, NewGameLobbyFragment.class));
-                finish();
+                });
+
                 break;
             case R.id.button_joingame:
                 startActivity(new Intent(MainMenuFragment.this, JoinGameFragment.class));

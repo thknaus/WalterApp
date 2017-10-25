@@ -82,6 +82,11 @@ public class RegisterFragment extends Activity implements View.OnClickListener{
                                 //onBackPressed();
                                 finish();
                             }
+                            else{
+                                /*
+                                TODO: Snackbar unable to create User
+                                 */
+                            }
 
                         }catch(JSONException e){
                             Log.v(TAG, e.toString());

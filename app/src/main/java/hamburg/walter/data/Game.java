@@ -9,7 +9,7 @@ public class Game {
     public static Game gameSession = new Game();
 
     private String gameName = "";
-    private String gameId = "";
+    private String gameSessionId = "";
 
 
     public Game(){}
@@ -21,8 +21,11 @@ public class Game {
     public void setGameName(String name){
         gameName = name;
     }
-    public void setGameSession(String id){
-        gameId = id;
+    public void setGameSessionId(String id){
+        gameSessionId = id;
+    }
+    public String getGameSessionId(){
+        return gameSessionId;
     }
 
 }

@@ -44,6 +44,7 @@ public class NewGameLobbyFragment extends AppCompatActivity implements View.OnCl
         game = game.getInstance();
 
         gameId = (TextView)findViewById(R.id.game_id);
+        gameId.setText(game.getGameSessionId());
 
         gameName = (EditText)findViewById(R.id.text_gamename);
         startBtn = (Button)findViewById(R.id.button_startgame);
@@ -60,29 +61,32 @@ public class NewGameLobbyFragment extends AppCompatActivity implements View.OnCl
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.button_startgame:
-                if(gameName.toString().equals("")){
+                if(gameName.getText().toString().equals("")){
                     /*
-                        TODO: Show Snackbar
+                        TODO: Snackbar choose game name
                      */
                     break;
                 }
                 game.setGameName(gameName.toString());
 
-/*                RequestParams params = new RequestParams();
-                params.put("gamesession", gameName.getText());
 
-                AsyncClient.post("/login", params, new mJsonHttpResponseHandler(context){
+                RequestParams params = new RequestParams();
+                params.put("gameSessionId", game.getGameSessionId());
+                params.put("gameName", gameName.getText().toString());
+
+                AsyncClient.post("/updateGameFromClient", params, new mJsonHttpResponseHandler(context){
                     @Override
                     public void onSuccess(int statusCode, Header[] headers, JSONObject response){
                         try{
-                            if(response.getString("SERVER_MESSAGE") == null){
+                                if(response.getInt("SERVER_RESPONSE") == 1){
+
 
                             }
                         }catch (JSONException e){
 
                         }
                     }
-                });*/
+                });
                 break;
             case R.id.button_startgameback:
                 break;

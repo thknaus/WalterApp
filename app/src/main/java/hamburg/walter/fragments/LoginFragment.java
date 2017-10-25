@@ -89,11 +89,11 @@ public class LoginFragment extends AppCompatActivity implements View.OnClickList
                                 Intent mainMenuFragment = new Intent(LoginFragment.this, MainMenuFragment.class);
                                 startActivity(mainMenuFragment);
                                 finish();
-
-                            } else if (response.getInt(context.getString(R.string.server_message)) == 1) {
-                                Toast.makeText(context, response.getString("SERVER_MESSAGE"), Toast.LENGTH_SHORT).show();
-                            } else {
-                                Toast.makeText(context, R.string.loginfailed, Toast.LENGTH_SHORT).show();
+                            }
+                            else{
+                                /*
+                                TODO: Snackbar unable to login
+                                 */
                             }
                         } catch (JSONException e) {
                             e.printStackTrace();
