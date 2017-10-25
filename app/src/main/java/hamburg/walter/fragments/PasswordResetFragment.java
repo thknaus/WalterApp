@@ -13,10 +13,17 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.loopj.android.http.RequestParams;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 import org.w3c.dom.Text;
 
+import cz.msebera.android.httpclient.Header;
 import hamburg.walter.R;
 import hamburg.walter.helper.EMailValidator;
+import hamburg.walter.sync.AsyncClient;
+import hamburg.walter.sync.mJsonHttpResponseHandler;
 
 public class PasswordResetFragment extends Activity implements View.OnClickListener {
 
@@ -50,6 +57,26 @@ public class PasswordResetFragment extends Activity implements View.OnClickListe
             case R.id.request_password_btn:
                 if (EMailValidator.isValid(myEmail)) {
                     //Send Email
+                    RequestParams params = new RequestParams();
+                    params.put("email", myEmail);
+
+                    AsyncClient.post("/sendrequestmail", params, new mJsonHttpResponseHandler(context) {
+                        @Override
+                        public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+                            try {
+                                if (response.getInt("SERVER_RESPONSE") == 1) {
+                                    //// TODO: 25.10.2017  
+                                }
+                                else{
+                                /*
+                                TODO: Snackbar unable to login
+                                 */
+                                }
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                    });
                 } else {
                     //Show Snackbar
                 }
