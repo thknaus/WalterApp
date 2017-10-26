@@ -3,12 +3,10 @@ package hamburg.walter.fragments;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.github.nkzawa.emitter.Emitter;
@@ -23,8 +21,8 @@ import java.net.URISyntaxException;
 
 import cz.msebera.android.httpclient.Header;
 import hamburg.walter.R;
-import hamburg.walter.activities.MainActivity;
 import hamburg.walter.data.Game;
+import hamburg.walter.data.IP;
 import hamburg.walter.data.Store;
 import hamburg.walter.data.User;
 import hamburg.walter.sync.AsyncClient;
@@ -38,7 +36,8 @@ public class MainMenuFragment extends AppCompatActivity implements View.OnClickL
     private Socket mSocket;
     {
         try{
-            mSocket = IO.socket("http://192.168.0.103:8080");
+
+            mSocket = IO.socket(new IP().URL);
         }catch(URISyntaxException e){
 
         }
