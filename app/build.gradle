@@ -2,7 +2,7 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 24
-    buildToolsVersion "25.0.0"
+    buildToolsVersion '26.0.2'
     defaultConfig {
         applicationId "hamburg.walter"
         targetSdkVersion 24
@@ -19,12 +19,16 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    flavorDimensions "minApi"
 
     productFlavors {
-        dev {
+        minApi23 {
+            dimension "minApi"
             minSdkVersion 17
         }
-        prod {
+
+        minApi18 {
+            dimension "minApi"
             minSdkVersion 17
         }
     }
