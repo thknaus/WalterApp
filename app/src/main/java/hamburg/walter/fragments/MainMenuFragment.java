@@ -11,10 +11,15 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import com.github.nkzawa.emitter.Emitter;
 import com.loopj.android.http.RequestParams;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+import com.github.nkzawa.socketio.client.IO;
+import com.github.nkzawa.socketio.client.Socket;
+
+import java.net.URISyntaxException;
 
 import cz.msebera.android.httpclient.Header;
 import hamburg.walter.R;
@@ -30,6 +35,20 @@ public class MainMenuFragment extends AppCompatActivity implements View.OnClickL
         Store.d("FavoriteFragment", stringableMessage);
     }
 
+    private Socket mSocket;
+    {
+        try{
+            mSocket = IO.socket("http://192.168.0.103:8080");
+        }catch(URISyntaxException e){
+
+        }
+    }
+    private Emitter.Listener updateFromServer = new Emitter.Listener() {
+        @Override
+        public void call(final Object[] args) {
+            JSONObject data = (JSONObject) args[0];
+        }
+    };
     private Button newgameBtn, exitGameBtn, joinGameBtn;
     private EditText playerNameTxt;
     User user;
@@ -41,6 +60,13 @@ public class MainMenuFragment extends AppCompatActivity implements View.OnClickL
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        /*
+            Connext to webservice. socket.io
+         */
+        mSocket.connect();
+        mSocket.on("test", updateFromServer);
+
 
         context = this;
         setContentView(R.layout.fragment_mainmenu);
