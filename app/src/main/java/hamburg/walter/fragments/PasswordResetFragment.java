@@ -25,7 +25,7 @@ import org.w3c.dom.Text;
 
 import hamburg.walter.R;
 import hamburg.walter.helper.EMailValidator;
-import hamburg.walter.helper.ShowSnackbar;
+import hamburg.walter.helper.SnackbarShow;
 import hamburg.walter.sync.AsyncClient;
 import hamburg.walter.sync.mJsonHttpResponseHandler;
 
@@ -69,11 +69,11 @@ public class PasswordResetFragment extends Activity implements View.OnClickListe
                         public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                             try {
                                 if (response.getInt("SERVER_RESPONSE") == 1) {
-                                    new ShowSnackbar().showSnackbar(parentLayout, getString(R.string.send_email));
+                                    new SnackbarShow().showSnackbar(parentLayout, getString(R.string.send_email));
                                 } else if (response.getInt("SERVER_RESPONSE") == 0) {
-                                    new ShowSnackbar().showSnackbar(parentLayout, getString(R.string.unknow_email));
+                                    new SnackbarShow().showSnackbar(parentLayout, getString(R.string.unknow_email));
                                 } else {
-                                    new ShowSnackbar().showSnackbar(parentLayout, getString(R.string.unknow_error));
+                                    new SnackbarShow().showSnackbar(parentLayout, getString(R.string.unknow_error));
                                 }
                             } catch (JSONException e) {
                                 e.printStackTrace();
@@ -81,7 +81,7 @@ public class PasswordResetFragment extends Activity implements View.OnClickListe
                         }
                     });
                 } else {
-                    new ShowSnackbar().showSnackbar(parentLayout, getString(R.string.forgotpw_message));
+                    new SnackbarShow().showSnackbar(parentLayout, getString(R.string.forgotpw_message));
                 }
                 break;
         }
