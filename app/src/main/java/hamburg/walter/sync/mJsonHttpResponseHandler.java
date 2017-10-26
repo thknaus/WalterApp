@@ -6,11 +6,11 @@ import android.view.View;
 
 import com.loopj.android.http.JsonHttpResponseHandler;
 
+import org.apache.http.Header;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import cz.msebera.android.httpclient.Header;
 import hamburg.walter.R;
 import hamburg.walter.fragments.MainMenuFragment;
 

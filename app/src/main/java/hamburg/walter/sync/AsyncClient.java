@@ -7,15 +7,17 @@ import android.widget.Toast;
 
 import com.loopj.android.http.*;
 
-import cz.msebera.android.httpclient.Header;
+import org.apache.http.Header;
+
 import hamburg.walter.R;
+import hamburg.walter.data.IP;
 
 /**
  * Created by Thomas on 31.08.2017.
  */
 
 public class AsyncClient {
-    private static final String BASE_URL = "http://192.168.0.103:8080";
+    private static final String BASE_URL = "http://" + new IP().URL;
 
     private static AsyncHttpClient client = new AsyncHttpClient();
 

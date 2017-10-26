@@ -14,13 +14,13 @@ import android.widget.Toast;
 
 import com.loopj.android.http.RequestParams;
 
-import cz.msebera.android.httpclient.Header;
 import hamburg.walter.R;
 import hamburg.walter.data.User;
 import hamburg.walter.sync.AsyncClient;
 import hamburg.walter.sync.ServerRequest;
 import hamburg.walter.sync.mJsonHttpResponseHandler;
 
+import org.apache.http.Header;
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONArray;
@@ -84,7 +84,7 @@ public class RegisterFragment extends Activity implements View.OnClickListener{
                             }
                             else{
                                 /*
-                                TODO: Snackbar unable to create User
+                                TODO: ShowSnackbar unable to create User
                                  */
                             }
 

@@ -12,6 +12,7 @@ import android.widget.Toast;
 import com.github.nkzawa.emitter.Emitter;
 import com.loopj.android.http.RequestParams;
 
+import org.apache.http.Header;
 import org.json.JSONException;
 import org.json.JSONObject;
 import com.github.nkzawa.socketio.client.IO;
@@ -19,7 +20,6 @@ import com.github.nkzawa.socketio.client.Socket;
 
 import java.net.URISyntaxException;
 
-import cz.msebera.android.httpclient.Header;
 import hamburg.walter.R;
 import hamburg.walter.data.Game;
 import hamburg.walter.data.IP;
@@ -95,7 +95,7 @@ public class MainMenuFragment extends AppCompatActivity implements View.OnClickL
             case R.id.button_newgame:
                 if(playerNameTxt.getText().equals("")){
                     /*
-                    TODO: Snackbar choose playername
+                    TODO: ShowSnackbar choose playername
                      */
                     break;
                 }
@@ -116,7 +116,7 @@ public class MainMenuFragment extends AppCompatActivity implements View.OnClickL
                                 finish();
                             } else {
                                 /*
-                                    TODO: Snackbar throw error in game create
+                                    TODO: ShowSnackbar throw error in game create
                                  */
                                 Toast.makeText(context, R.string.loginfailed, Toast.LENGTH_SHORT).show();
                             }

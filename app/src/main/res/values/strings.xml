@@ -37,4 +37,7 @@
     <string name="gamename">Name der neuen Runde.</string>
     <string name="startgame">Spiel starten</string>
     <string name="startgameback">Zurück</string>
+    <string name="unknow_error">Ups da ist was schief gegangen</string>
+    <string name="unknow_email">"Benutzer mit dieser EMail nicht vorhanden"</string>
+    <string name="send_email">"Ihnen wurde eine Email zugeschickt"</string>
 </resources>

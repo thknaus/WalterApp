@@ -5,23 +5,27 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.GridLayout;
 import android.widget.TextView;
 
 import com.loopj.android.http.RequestParams;
 
+import org.apache.http.Header;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.w3c.dom.Text;
 
-import cz.msebera.android.httpclient.Header;
 import hamburg.walter.R;
 import hamburg.walter.helper.EMailValidator;
+import hamburg.walter.helper.ShowSnackbar;
 import hamburg.walter.sync.AsyncClient;
 import hamburg.walter.sync.mJsonHttpResponseHandler;
 
@@ -30,21 +34,21 @@ public class PasswordResetFragment extends Activity implements View.OnClickListe
     public Button requesNewPassword;
     public TextView email;
     Context context;
+    View parentLayout;
 
     public PasswordResetFragment() {
         // Required empty public constructor
     }
 
     @Override
-    public void onCreate(Bundle savedInstanceState){
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_password_reset);
         context = this;
         email = (TextView) findViewById(R.id.email);
         requesNewPassword = (Button) findViewById(R.id.request_password_btn);
-
+        parentLayout = findViewById(android.R.id.content);
         requesNewPassword.setOnClickListener(this);
-
     }
 
 
@@ -65,12 +69,11 @@ public class PasswordResetFragment extends Activity implements View.OnClickListe
                         public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                             try {
                                 if (response.getInt("SERVER_RESPONSE") == 1) {
-                                    //// TODO: 25.10.2017  
-                                }
-                                else{
-                                /*
-                                TODO: Snackbar unable to login
-                                 */
+                                    new ShowSnackbar().showSnackbar(parentLayout, getString(R.string.send_email));
+                                } else if (response.getInt("SERVER_RESPONSE") == 0) {
+                                    new ShowSnackbar().showSnackbar(parentLayout, getString(R.string.unknow_email));
+                                } else {
+                                    new ShowSnackbar().showSnackbar(parentLayout, getString(R.string.unknow_error));
                                 }
                             } catch (JSONException e) {
                                 e.printStackTrace();
@@ -78,7 +81,7 @@ public class PasswordResetFragment extends Activity implements View.OnClickListe
                         }
                     });
                 } else {
-                    //Show Snackbar
+                    new ShowSnackbar().showSnackbar(parentLayout, getString(R.string.forgotpw_message));
                 }
                 break;
         }

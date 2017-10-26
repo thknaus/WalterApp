@@ -10,10 +10,11 @@ import android.widget.TextView;
 
 import com.loopj.android.http.RequestParams;
 
+import org.apache.http.Header;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import cz.msebera.android.httpclient.Header;
+
 import hamburg.walter.R;
 import hamburg.walter.data.Game;
 import hamburg.walter.sync.AsyncClient;
@@ -63,7 +64,7 @@ public class NewGameLobbyFragment extends AppCompatActivity implements View.OnCl
             case R.id.button_startgame:
                 if(gameName.getText().toString().equals("")){
                     /*
-                        TODO: Snackbar choose game name
+                        TODO: ShowSnackbar choose game name
                      */
                     break;
                 }

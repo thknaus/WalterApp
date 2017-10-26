@@ -6,28 +6,19 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import com.loopj.android.http.RequestParams;
 
-import org.apache.http.NameValuePair;
-import org.apache.http.message.BasicNameValuePair;
+import org.apache.http.Header;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import cz.msebera.android.httpclient.Header;
 import hamburg.walter.R;
-import hamburg.walter.activities.MainActivity;
 import hamburg.walter.data.User;
 import hamburg.walter.sync.AsyncClient;
-import hamburg.walter.sync.ServerRequest;
 import hamburg.walter.sync.mJsonHttpResponseHandler;
 
 public class LoginFragment extends AppCompatActivity implements View.OnClickListener {
@@ -39,16 +30,14 @@ public class LoginFragment extends AppCompatActivity implements View.OnClickList
     User user;
 
     SharedPreferences pref;
-    Dialog reset;
     Context context;
-    String player;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_login);
 
-        user = user.getInstance();
+        user = User.getInstance();
 
         context = this;
         emailTxt = (EditText) findViewById(R.id.loginemail);
@@ -92,7 +81,7 @@ public class LoginFragment extends AppCompatActivity implements View.OnClickList
                             }
                             else{
                                 /*
-                                TODO: Snackbar unable to login
+                                TODO: ShowSnackbar unable to login
                                  */
                             }
                         } catch (JSONException e) {
