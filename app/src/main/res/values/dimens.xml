@@ -39,7 +39,8 @@
     <dimen name="text_size_tiny">4sp</dimen>
     <dimen name="text_size_micro">2sp</dimen>
 
-    <dimen name="button_larg_big_w">146dp</dimen>
+    <dimen name="button_w_larg">146dp</dimen>
+    <dimen name="button_w_middel">98dp</dimen>
     <dimen name="button_larg_big_h">48dp</dimen>
 
 

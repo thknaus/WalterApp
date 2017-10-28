@@ -1,13 +1,14 @@
 package hamburg.walter.fragments;
 
-import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.os.Handler;
+import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -15,22 +16,15 @@ import android.widget.Toast;
 import com.loopj.android.http.RequestParams;
 
 import hamburg.walter.R;
-import hamburg.walter.data.User;
+import hamburg.walter.activities.MainActivity;
 import hamburg.walter.sync.AsyncClient;
-import hamburg.walter.sync.ServerRequest;
 import hamburg.walter.sync.mJsonHttpResponseHandler;
 
 import org.apache.http.Header;
-import org.apache.http.NameValuePair;
-import org.apache.http.message.BasicNameValuePair;
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.util.ArrayList;
-import java.util.List;
-
-public class RegisterFragment extends Activity implements View.OnClickListener{
+public class RegisterFragment extends Fragment implements View.OnClickListener{
     private static String TAG = "RegisterFragment";
 
     SharedPreferences pref;
@@ -43,16 +37,20 @@ public class RegisterFragment extends Activity implements View.OnClickListener{
     @Override
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.fragment_register);
-        context = this;
+       // pref = getSharedPreferences("AppPref", MODE_PRIVATE);
+    }
 
-        pref = getSharedPreferences("AppPref", MODE_PRIVATE);
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, @Nullable Bundle savedInstanceState) {
+        View rootView = inflater.inflate(R.layout.fragment_register, container, false);
 
-        email = (EditText)findViewById(R.id.registermail);
-        password = (EditText)findViewById(R.id.registerpw);
-        register = (Button)findViewById(R.id.register_btn);
+        email = (EditText) rootView.findViewById(R.id.registermail);
+        password = (EditText) rootView.findViewById(R.id.registerpw);
+        register = (Button) rootView.findViewById(R.id.register_btn);
 
         register.setOnClickListener(this);
+
+        return rootView;
     }
 
     @Override
@@ -66,7 +64,7 @@ public class RegisterFragment extends Activity implements View.OnClickListener{
                 RequestParams params = new RequestParams();
                 params.put("email", emailtxt);
                 params.put("password", passwordtxt);
-                AsyncClient.post("/signup", params, new mJsonHttpResponseHandler(this){
+                AsyncClient.post("/signup", params, new mJsonHttpResponseHandler(getContext()){
                     @Override
                     public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                         try{
@@ -76,11 +74,8 @@ public class RegisterFragment extends Activity implements View.OnClickListener{
                                 Toast.makeText(context, R.string.registered, Toast.LENGTH_SHORT).show();
 
                                 Log.v(TAG, "Created user: "+ emailtxt);
-                                Intent loginactivity = new Intent(RegisterFragment.this, LoginFragment.class);
-                                loginactivity.putExtra("USER_EMAIL", s);
-                                startActivity(loginactivity);
-                                //onBackPressed();
-                                finish();
+                                ((MainActivity)getActivity()).showFragment(LoginFragment.class);
+                                //loginactivity.putExtra("USER_EMAIL", s);
                             }
                             else{
                                 /*
@@ -96,15 +91,5 @@ public class RegisterFragment extends Activity implements View.OnClickListener{
                 });
                 break;
         }
-    }
-    @Override
-    public void onBackPressed(){
-        Handler handler = new Handler();
-        handler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                startActivity(new Intent(RegisterFragment.this, LoginFragment.class));
-            }
-        }, 0);
     }
 }

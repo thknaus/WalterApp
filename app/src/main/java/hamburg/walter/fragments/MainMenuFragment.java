@@ -3,8 +3,12 @@ package hamburg.walter.fragments;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -21,6 +25,7 @@ import com.github.nkzawa.socketio.client.Socket;
 import java.net.URISyntaxException;
 
 import hamburg.walter.R;
+import hamburg.walter.activities.MainActivity;
 import hamburg.walter.data.Game;
 import hamburg.walter.data.IP;
 import hamburg.walter.data.Store;
@@ -28,7 +33,7 @@ import hamburg.walter.data.User;
 import hamburg.walter.sync.AsyncClient;
 import hamburg.walter.sync.mJsonHttpResponseHandler;
 
-public class MainMenuFragment extends AppCompatActivity implements View.OnClickListener {
+public class MainMenuFragment extends Fragment implements View.OnClickListener {
     private static void d(Object... stringableMessage) {
         Store.d("FavoriteFragment", stringableMessage);
     }
@@ -57,7 +62,7 @@ public class MainMenuFragment extends AppCompatActivity implements View.OnClickL
     Context context;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         /*
@@ -66,27 +71,25 @@ public class MainMenuFragment extends AppCompatActivity implements View.OnClickL
         mSocket.connect();
         mSocket.on("test", updateFromServer);
 
-
-        context = this;
-        setContentView(R.layout.fragment_mainmenu);
         user = user.getInstance();
 
-        newgameBtn = (Button) findViewById(R.id.button_newgame);
-        joinGameBtn = (Button) findViewById(R.id.button_joingame);
-        exitGameBtn = (Button) findViewById(R.id.button_exitgame);
 
-        playerNameTxt = (EditText)findViewById(R.id.text_playername);
+    }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        View rootView = inflater.inflate(R.layout.fragment_mainmenu, container, false);
+
+        newgameBtn = (Button) rootView.findViewById(R.id.button_newgame);
+        joinGameBtn = (Button)  rootView.findViewById(R.id.button_joingame);
+        exitGameBtn = (Button)  rootView.findViewById(R.id.button_exitgame);
+        playerNameTxt = (EditText)  rootView.findViewById(R.id.text_playername);
 
         newgameBtn.setOnClickListener(this);
         joinGameBtn.setOnClickListener(this);
         exitGameBtn.setOnClickListener(this);
-    }
 
-
-    @Override
-    public void onBackPressed() {
-        startActivity(new Intent(MainMenuFragment.this, ExitGameFragment.class));
-        finish();
+        return rootView;
     }
 
     @Override
@@ -111,9 +114,7 @@ public class MainMenuFragment extends AppCompatActivity implements View.OnClickL
                         try {
                             if (response.getInt("SERVER_RESPONSE") == 1) {
                                 game.setGameSessionId(response.getString("SERVER_MESSAGE"));
-
-                                startActivity(new Intent(MainMenuFragment.this, NewGameLobbyFragment.class));
-                                finish();
+                                ((MainActivity)getActivity()).showFragment(NewGameLobbyFragment.class);
                             } else {
                                 /*
                                     TODO: ShowSnackbar throw error in game create
@@ -128,11 +129,10 @@ public class MainMenuFragment extends AppCompatActivity implements View.OnClickL
 
                 break;
             case R.id.button_joingame:
-                startActivity(new Intent(MainMenuFragment.this, JoinGameFragment.class));
-                finish();
+                ((MainActivity)getActivity()).showFragment(JoinGameFragment.class);
                 break;
             case R.id.button_exitgame:
-                onBackPressed();
+                //todo
                 break;
         }
     }

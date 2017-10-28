@@ -42,7 +42,7 @@
         <item name="android:background">@drawable/rounded_corner</item>
         <item name="android:textSize">@dimen/text</item>
         <item name="android:layout_height">@dimen/button_larg_big_h</item>
-        <item name="android:layout_width">@dimen/button_larg_big_w</item>
+        <item name="android:layout_width">@dimen/button_w_larg</item>
         <item name="android:layout_marginRight">@dimen/margin</item>
         <item name="android:layout_marginLeft">@dimen/margin</item>
     </style>

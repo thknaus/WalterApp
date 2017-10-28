@@ -1,12 +1,15 @@
 package hamburg.walter.fragments;
 
-import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 
@@ -17,11 +20,12 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import hamburg.walter.R;
+import hamburg.walter.activities.MainActivity;
 import hamburg.walter.data.User;
 import hamburg.walter.sync.AsyncClient;
 import hamburg.walter.sync.mJsonHttpResponseHandler;
 
-public class LoginFragment extends AppCompatActivity implements View.OnClickListener {
+public class LoginFragment extends Fragment implements View.OnClickListener {
 
     EditText emailTxt, password;
     Button login, register, forgotPW;
@@ -32,31 +36,47 @@ public class LoginFragment extends AppCompatActivity implements View.OnClickList
     SharedPreferences pref;
     Context context;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.fragment_login);
+    public static LoginFragment newInstance() {
+        Bundle args = new Bundle();
+        LoginFragment fragment = new LoginFragment();
+        fragment.setArguments(args);
+        return fragment;
+    }
 
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+    }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        View rootView = inflater.inflate(R.layout.fragment_login, container, false);
         user = User.getInstance();
 
-        context = this;
-        emailTxt = (EditText) findViewById(R.id.loginemail);
-        password = (EditText) findViewById(R.id.loginpw);
+        emailTxt = (EditText) rootView.findViewById(R.id.loginemail);
+        password = (EditText) rootView.findViewById(R.id.loginpw);
 
-        login = (Button) findViewById(R.id.login_btn);
-        register = (Button) findViewById(R.id.register_btn);
-        forgotPW = (Button) findViewById(R.id.forgotpw_btn);
+        login = (Button) rootView.findViewById(R.id.login_btn);
+        register = (Button) rootView.findViewById(R.id.register_btn);
+        forgotPW = (Button) rootView.findViewById(R.id.forgotpw_btn);
 
         login.setOnClickListener(this);
         register.setOnClickListener(this);
         forgotPW.setOnClickListener(this);
 
-        pref = getSharedPreferences("AppPref", MODE_PRIVATE);
+
+        return rootView;
+    }
+
+    public void updateView() {
+        /*pref = getSharedPreferences("AppPref", MODE_PRIVATE);
 
         String email = getIntent().getStringExtra("USER_EMAIL");
         if(email != null){
             emailTxt.setText(email);
         }
+        */
     }
 
     @Override
@@ -75,14 +95,12 @@ public class LoginFragment extends AppCompatActivity implements View.OnClickList
                         try {
                             if (response.getInt("SERVER_RESPONSE") == 1) {
                                 user.setUserData(response.getJSONObject("SERVER_MESSAGE"));
-                                Intent mainMenuFragment = new Intent(LoginFragment.this, MainMenuFragment.class);
-                                startActivity(mainMenuFragment);
-                                finish();
+                                ((MainActivity)getActivity()).showFragment(MainMenuFragment.class);
                             }
                             else{
-                                /*
-                                TODO: ShowSnackbar unable to login
-                                 */
+
+                               // TODO: ShowSnackbar unable to login
+
                             }
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -91,14 +109,10 @@ public class LoginFragment extends AppCompatActivity implements View.OnClickList
                 });
                 break;
             case R.id.register_btn:
-                Intent registerFragment = new Intent(LoginFragment.this, RegisterFragment.class);
-                startActivity(registerFragment);
-                finish();
+                ((MainActivity)getActivity()).showFragment(RegisterFragment.class);
                 break;
             case R.id.forgotpw_btn:
-                Intent passwordresetfragment = new Intent(LoginFragment.this, PasswordResetFragment.class);
-                startActivity(passwordresetfragment);
-                finish();
+                ((MainActivity)getActivity()).showFragment(PasswordResetFragment.class);
                 break;
         }
     }
