@@ -3,7 +3,6 @@ package hamburg.walter.fragments;
 
 
 
-import android.app.FragmentManager;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -22,7 +21,7 @@ import org.json.JSONObject;
 
 import hamburg.walter.R;
 import hamburg.walter.helper.EMailValidator;
-import hamburg.walter.helper.SnackbarShow;
+import hamburg.walter.helper.ShowSnackbar;
 import hamburg.walter.sync.AsyncClient;
 import hamburg.walter.sync.mJsonHttpResponseHandler;
 
@@ -74,11 +73,11 @@ public class PasswordResetFragment extends Fragment implements View.OnClickListe
                         public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                             try {
                                 if (response.getInt("SERVER_RESPONSE") == 1) {
-                                    new SnackbarShow().showSnackbar(parentLayout, getString(R.string.send_email));
+                                    new ShowSnackbar().showSnackbar(parentLayout, getString(R.string.send_email));
                                 } else if (response.getInt("SERVER_RESPONSE") == 0) {
-                                    new SnackbarShow().showSnackbar(parentLayout, getString(R.string.unknow_email));
+                                    new ShowSnackbar().showSnackbar(parentLayout, getString(R.string.unknow_email));
                                 } else {
-                                    new SnackbarShow().showSnackbar(parentLayout, getString(R.string.unknow_error));
+                                    new ShowSnackbar().showSnackbar(parentLayout, getString(R.string.unknow_error));
                                 }
                             } catch (JSONException e) {
                                 e.printStackTrace();
@@ -86,7 +85,7 @@ public class PasswordResetFragment extends Fragment implements View.OnClickListe
                         }
                     });
                 } else {
-                    new SnackbarShow().showSnackbar(parentLayout, getString(R.string.forgotpw_message));
+                    new ShowSnackbar().showSnackbar(parentLayout, getString(R.string.forgotpw_message));
                 }
                 break;
         }

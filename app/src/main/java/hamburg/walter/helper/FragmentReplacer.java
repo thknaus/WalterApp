@@ -15,7 +15,7 @@ public class FragmentReplacer {
      */
     private static boolean change(int id, FragmentManager fragmentManager, Fragment newFrag) {
         FragmentTransaction transaction = fragmentManager.beginTransaction();
-        transaction.replace(id, newFrag);
+        transaction.replace(id, newFrag).addToBackStack(fragmentManager.getClass().getName());
         transaction.commit();
         return true;
     }

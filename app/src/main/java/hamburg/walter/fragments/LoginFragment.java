@@ -1,12 +1,9 @@
 package hamburg.walter.fragments;
 
 import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,15 +22,15 @@ import hamburg.walter.data.User;
 import hamburg.walter.sync.AsyncClient;
 import hamburg.walter.sync.mJsonHttpResponseHandler;
 
+import static android.content.Context.MODE_PRIVATE;
+
 public class LoginFragment extends Fragment implements View.OnClickListener {
 
-    EditText emailTxt, password;
-    Button login, register, forgotPW;
-    String emailtxt, passwordtxt;
-
-    User user;
-
-    SharedPreferences pref;
+    private EditText emailTxt, password;
+    private Button login, register, forgotPW;
+    private String emailtxt, passwordtxt;
+    private User user;
+    private SharedPreferences pref;
     Context context;
 
     public static LoginFragment newInstance() {
@@ -53,7 +50,7 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_login, container, false);
         user = User.getInstance();
-
+        pref = ((MainActivity)getActivity()).getSharedPreferences("AppPref", MODE_PRIVATE);
         emailTxt = (EditText) rootView.findViewById(R.id.loginemail);
         password = (EditText) rootView.findViewById(R.id.loginpw);
 
@@ -70,13 +67,11 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
     }
 
     public void updateView() {
-        /*pref = getSharedPreferences("AppPref", MODE_PRIVATE);
 
-        String email = getIntent().getStringExtra("USER_EMAIL");
+        String email =((MainActivity)getActivity()).getIntent().getStringExtra("USER_EMAIL");
         if(email != null){
             emailTxt.setText(email);
         }
-        */
     }
 
     @Override

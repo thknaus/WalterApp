@@ -1,37 +1,33 @@
 package hamburg.walter.activities;
 
-import android.content.Intent;
+import android.app.Activity;
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.FragmentManager;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 
 import hamburg.walter.R;
 import hamburg.walter.fragments.LoginFragment;
 import hamburg.walter.helper.FragmentReplacer;
+import hamburg.walter.helper.ShowSnackbar;
 
 public class MainActivity extends FragmentActivity {
 
     public static final String TAG = "Basic Network Demo";
-    // Whether there is a Wi-Fi connection.
-    private static boolean wifiConnected = false;
-    // Whether there is a mobile connection.
-    private static boolean mobileConnected = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         View splashScreen =  findViewById(R.layout.splash_screen);
-        
+
         checkNetworkConnection();
         showFragment(LoginFragment.class);
     }
@@ -60,10 +56,11 @@ public class MainActivity extends FragmentActivity {
 
     private void checkNetworkConnection() {
         ConnectivityManager connMgr = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        assert connMgr != null;
         NetworkInfo activeInfo = connMgr.getActiveNetworkInfo();
         if (activeInfo != null && activeInfo.isConnected()) {
-            wifiConnected = activeInfo.getType() == ConnectivityManager.TYPE_WIFI;
-            mobileConnected = activeInfo.getType() == ConnectivityManager.TYPE_MOBILE;
+            boolean wifiConnected = activeInfo.getType() == ConnectivityManager.TYPE_WIFI;
+            boolean mobileConnected = activeInfo.getType() == ConnectivityManager.TYPE_MOBILE;
             if(wifiConnected) {
                 Log.i(TAG, "wifi_connection");
             } else if (mobileConnected){
@@ -84,6 +81,29 @@ public class MainActivity extends FragmentActivity {
 
     public void showFragment(Class fragment, Bundle args) {
         FragmentReplacer.replace(R.id.main_activity_container, getSupportFragmentManager(), fragment, args);
+    }
+
+    @Override
+    public void onBackPressed() {
+        int count = getFragmentManager().getBackStackEntryCount();
+        Log.d("onBackPressed count", count+"");
+        if (count == 0) {
+            // SnackBar quit Game?
+            super.onBackPressed();
+        } else {
+            getFragmentManager().popBackStack();
+        }
+        hideKeyboard();
+    }
+
+    public void hideKeyboard() {
+        InputMethodManager imm = (InputMethodManager) getSystemService(Activity.INPUT_METHOD_SERVICE);
+        View view = getCurrentFocus();
+        if (view == null) {
+            view = new View(this);
+        }
+        assert imm != null;
+        imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
     }
 }
 
