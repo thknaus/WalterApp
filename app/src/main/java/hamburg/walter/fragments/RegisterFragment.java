@@ -71,7 +71,7 @@ public class RegisterFragment extends Fragment implements View.OnClickListener{
                             if(!(response.getString("SERVER_MESSAGE") == null)){
 
                                 String s = response.getString("SERVER_MESSAGE");
-                                Toast.makeText(context, R.string.registered, Toast.LENGTH_SHORT).show();
+                                // Toast.makeText(context, R.string.registered, Toast.LENGTH_SHORT).show();
 
                                 Log.v(TAG, "Created user: "+ emailtxt);
                                 ((MainActivity)getActivity()).showFragment(LoginFragment.class);

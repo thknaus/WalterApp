@@ -50,10 +50,14 @@ dependencies {
     compile 'org.jdeferred:jdeferred-android-aar:+'
     compile 'com.loopj.android:android-async-http:+'
     compile 'com.android.support:support-v4:+'
-    compile 'com.github.nkzawa:socket.io-client:0.3.0'
-    testCompile 'junit:junit:4.12'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     compile 'com.android.support:design:+'
+    compile('io.socket:socket.io-client:+') {
+        // excluding org.json which is provided by Android
+        exclude group: 'org.json', module: 'json'
+    }
+
+    testCompile 'junit:junit:4.12'
 }
 android {
     useLibrary 'org.apache.http.legacy'
