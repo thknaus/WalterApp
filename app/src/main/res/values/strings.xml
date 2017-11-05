@@ -17,6 +17,7 @@
     <string name="dialog_exit_mesage">bis du dir sicher, dass du das Spiel beenden möchtest?</string>
     <string name="welcome">Wilkommen bei</string>
     <string name="login">Login </string>
+    <string name="logout">Ausloggen </string>
     <string name="pw">Passwort</string>
     <string name="register">Register</string>
     <string name="change_pw">Change Password</string>

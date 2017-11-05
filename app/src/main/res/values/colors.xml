@@ -2,13 +2,16 @@
 <resources>
     <color name="colorPrimary">#06c9ff</color>
     <color name="colorPrimaryDark">#000000</color>
-    <color name="colorAccent">#4066ff</color>
+    <color name="colorAccent">#ffffff</color>
+
+    <color name="colorWhite">#505050</color>
+    <color name="colorGrey">#232323</color>
 
     <color name="colorTextBlack">#000000</color>
     <color name="colorTextWhite">#ffffff</color>
     <color name="colorTextGray">#bfbfbf</color>
 
-    <color name="colorButton1">#5bcbff</color>
+    <color name="colorButton1">#007bff</color>
     <color name="colorButton2">#ffffff</color>
 
     <color name="color3">#ffef40</color>

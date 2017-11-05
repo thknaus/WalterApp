@@ -22,6 +22,7 @@ import hamburg.walter.activities.MainActivity;
 import hamburg.walter.data.Game;
 import hamburg.walter.data.Store;
 import hamburg.walter.data.User;
+import hamburg.walter.helper.ShowSnackbar;
 import hamburg.walter.sync.AsyncClient;
 import hamburg.walter.sync.mJsonHttpResponseHandler;
 import lib.IOSocket;
@@ -31,8 +32,9 @@ public class MainMenuFragment extends Fragment implements View.OnClickListener {
         Store.d("FavoriteFragment", stringableMessage);
     }
 
-    private Button newgameBtn, exitGameBtn, joinGameBtn;
+    private Button newgameBtn, exitGameBtn, joinGameBtn, logoutBtn;
     private EditText playerNameTxt;
+    private String name;
     private User user;
     private Game game;
     IOSocket socket;
@@ -48,7 +50,6 @@ public class MainMenuFragment extends Fragment implements View.OnClickListener {
         } catch (URISyntaxException e) {
             e.printStackTrace();
         }
-
     }
 
     @Override
@@ -58,11 +59,13 @@ public class MainMenuFragment extends Fragment implements View.OnClickListener {
         newgameBtn = (Button) rootView.findViewById(R.id.button_newgame);
         joinGameBtn = (Button) rootView.findViewById(R.id.button_joingame);
         exitGameBtn = (Button) rootView.findViewById(R.id.button_exitgame);
+        logoutBtn = (Button) rootView.findViewById(R.id.logout_btn);
         playerNameTxt = (EditText) rootView.findViewById(R.id.text_playername);
 
         newgameBtn.setOnClickListener(this);
         joinGameBtn.setOnClickListener(this);
         exitGameBtn.setOnClickListener(this);
+        logoutBtn.setOnClickListener(this);
 
         return rootView;
     }
@@ -71,10 +74,9 @@ public class MainMenuFragment extends Fragment implements View.OnClickListener {
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.button_newgame:
-                if (playerNameTxt.getText().equals("")) {
-                    /*
-                    TODO: ShowSnackbar choose playername
-                     */
+                name = playerNameTxt.getText().toString();
+                if (name.isEmpty()) {
+                    new ShowSnackbar().showSnackbar(getView(), "Bitte gib einen Namen ein!");
                     break;
                 }
                 user.setName(playerNameTxt.getText().toString());
@@ -91,9 +93,7 @@ public class MainMenuFragment extends Fragment implements View.OnClickListener {
                                 game.setGameSessionId(response.getString("SERVER_MESSAGE"));
                                 ((MainActivity) getActivity()).showFragment(NewGameLobbyFragment.class);
                             } else {
-                                /*
-                                    TODO: ShowSnackbar throw error in game create
-                                 */
+                                new ShowSnackbar().showSnackbar(getView(), "Fehler beim erstellen des Spieles");
                                 Toast.makeText(getContext(), R.string.loginfailed, Toast.LENGTH_SHORT).show();
                             }
                         } catch (JSONException e) {
@@ -108,6 +108,9 @@ public class MainMenuFragment extends Fragment implements View.OnClickListener {
                 break;
             case R.id.button_exitgame:
                 //todo
+                break;
+            case  R.id.logout_btn:
+                ((MainActivity) getActivity()).showFragment(InitFragment.class);
                 break;
         }
     }

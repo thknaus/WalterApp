@@ -3,7 +3,9 @@ package hamburg.walter.fragments;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,6 +21,7 @@ import org.json.JSONObject;
 import hamburg.walter.R;
 import hamburg.walter.activities.MainActivity;
 import hamburg.walter.data.User;
+import hamburg.walter.helper.ShowSnackbar;
 import hamburg.walter.sync.AsyncClient;
 import hamburg.walter.sync.mJsonHttpResponseHandler;
 
@@ -26,7 +29,7 @@ import static android.content.Context.MODE_PRIVATE;
 
 public class LoginFragment extends Fragment implements View.OnClickListener {
 
-    private EditText emailTxt, password;
+    private EditText email, password;
     private Button login, forgotPW;
     private String emailtxt, passwordtxt;
     private User user;
@@ -51,7 +54,7 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
         View rootView = inflater.inflate(R.layout.fragment_login, container, false);
         user = User.getInstance();
         pref = (getActivity()).getSharedPreferences("AppPref", MODE_PRIVATE);
-        emailTxt = (EditText) rootView.findViewById(R.id.loginemail);
+        email = (EditText) rootView.findViewById(R.id.loginemail);
         password = (EditText) rootView.findViewById(R.id.loginpw);
 
         login = (Button) rootView.findViewById(R.id.login_btn);
@@ -66,9 +69,9 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
 
     public void updateView() {
 
-        String email =(getActivity()).getIntent().getStringExtra("USER_EMAIL");
+        String myEmail =(getActivity()).getIntent().getStringExtra("USER_EMAIL");
             if(email != null){
-            emailTxt.setText(email);
+            email.setText(myEmail);
         }
     }
 
@@ -76,30 +79,34 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.login_btn:
-                emailtxt = emailTxt.getText().toString();
+                emailtxt = email.getText().toString();
                 passwordtxt = password.getText().toString();
-                RequestParams params = new RequestParams();
-                params.put("username", emailtxt);
-                params.put("password", passwordtxt);
+                Log.d(passwordtxt, emailtxt);
+                if (!emailtxt.isEmpty() || !passwordtxt.isEmpty()) {
+                    RequestParams params = new RequestParams();
+                    params.put("username", emailtxt);
+                    params.put("password", passwordtxt);
 
-                AsyncClient.post("/login", params, new mJsonHttpResponseHandler(context) {
-                    @Override
-                    public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
-                        try {
-                            if (response.getInt("SERVER_RESPONSE") == 1) {
-                                user.setUserData(response.getJSONObject("SERVER_MESSAGE"));
-                                ((MainActivity)getActivity()).showFragment(MainMenuFragment.class);
+                    AsyncClient.post("/login", params, new mJsonHttpResponseHandler(context) {
+                        @Override
+                        public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+                            try {
+                                if (response.getInt("SERVER_RESPONSE") == 1) {
+                                    user.setUserData(response.getJSONObject("SERVER_MESSAGE"));
+                                    ((MainActivity) getActivity()).showFragment(MainMenuFragment.class);
+                                } else {
+
+                                    // TODO: ShowSnackbar unable to login
+
+                                }
+                            } catch (JSONException e) {
+                                e.printStackTrace();
                             }
-                            else{
-
-                               // TODO: ShowSnackbar unable to login
-
-                            }
-                        } catch (JSONException e) {
-                            e.printStackTrace();
                         }
-                    }
-                });
+                    });
+                } else {
+                    new ShowSnackbar().showSnackbar(getView(), "Bitte E-Mail-Adresse und Passwort eingeben");
+                }
                 break;
             case R.id.forgotpw_btn:
                 ((MainActivity)getActivity()).showFragment(PasswordResetFragment.class);
