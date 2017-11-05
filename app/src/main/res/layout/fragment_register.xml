@@ -4,13 +4,32 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/margin_headline"
+        android:text="@string/welcome"
+        android:textColor="@color/colorPrimary"
+        android:textSize="@dimen/text_size_large" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="@string/app_name"
+        android:textColor="@color/colorPrimary"
+        android:textSize="@dimen/text_size_big" />
+
     <EditText
         android:id="@+id/registermail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginEnd="@dimen/margin"
         android:layout_marginStart="@dimen/margin"
-        android:layout_marginTop="@dimen/margin"
+        android:layout_marginTop="@dimen/margin_huge"
         android:background="@drawable/frame_inputtext"
         android:hint="@string/email"
         android:inputType="textEmailAddress"

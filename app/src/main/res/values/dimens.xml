@@ -16,6 +16,7 @@
     <dimen name="text_tiny">4dp</dimen>
     <dimen name="text_extratiny">1dp</dimen>
 
+    <dimen name="margin_headline">128dp</dimen>
     <dimen name="margin_giant_plus">104dp</dimen>
     <dimen name="margin_giant">96dp</dimen>
     <dimen name="margin_large_plus">56dp</dimen>

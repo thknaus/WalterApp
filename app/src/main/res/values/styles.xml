@@ -8,6 +8,12 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="Button_without">
+        <item name="android:textColor">@color/colorTextBlack</item>
+        <item name="android:background">@drawable/rounded_corner</item>
+        <item name="android:textSize">@dimen/text_small_big</item>
+    </style>
+
     <style name="Button_Medium">
         <item name="android:textColor">@color/colorTextBlack</item>
         <item name="android:background">@drawable/rounded_corner</item>

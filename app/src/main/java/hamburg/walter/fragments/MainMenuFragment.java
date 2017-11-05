@@ -41,9 +41,7 @@ public class MainMenuFragment extends Fragment implements View.OnClickListener {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        /*
-            Connext to webservice. socket.io
-         */
+        /* Connext to webservice. socket.io */
         user = User.getInstance();
         try {
             socket = new IOSocket("connect");

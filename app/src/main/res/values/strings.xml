@@ -40,4 +40,5 @@
     <string name="unknow_error">Ups da ist was schief gegangen</string>
     <string name="unknow_email">"Benutzer mit dieser EMail nicht vorhanden"</string>
     <string name="send_email">"Ihnen wurde eine Email zugeschickt"</string>
+
 </resources>

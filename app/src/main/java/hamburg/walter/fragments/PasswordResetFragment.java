@@ -58,9 +58,7 @@ public class PasswordResetFragment extends Fragment implements View.OnClickListe
 
     @Override
     public void onClick(View view) {
-        final String myEmail;
-        myEmail = email.getText().toString();
-
+        final String myEmail = email.getText().toString();
         switch (view.getId()) {
             case R.id.request_password_btn:
                 if (EMailValidator.isValid(myEmail)) {
@@ -73,11 +71,11 @@ public class PasswordResetFragment extends Fragment implements View.OnClickListe
                         public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                             try {
                                 if (response.getInt("SERVER_RESPONSE") == 1) {
-                                    new ShowSnackbar().showSnackbar(parentLayout, getString(R.string.send_email));
+                                    new ShowSnackbar().showSnackbar(getView(), getString(R.string.send_email));
                                 } else if (response.getInt("SERVER_RESPONSE") == 0) {
-                                    new ShowSnackbar().showSnackbar(parentLayout, getString(R.string.unknow_email));
+                                    new ShowSnackbar().showSnackbar(getView(), getString(R.string.unknow_email));
                                 } else {
-                                    new ShowSnackbar().showSnackbar(parentLayout, getString(R.string.unknow_error));
+                                    new ShowSnackbar().showSnackbar(getView(), getString(R.string.unknow_error));
                                 }
                             } catch (JSONException e) {
                                 e.printStackTrace();
@@ -85,7 +83,7 @@ public class PasswordResetFragment extends Fragment implements View.OnClickListe
                         }
                     });
                 } else {
-                    new ShowSnackbar().showSnackbar(parentLayout, getString(R.string.forgotpw_message));
+                    new ShowSnackbar().showSnackbar(getView(), getString(R.string.forgotpw_message));
                 }
                 break;
         }

@@ -14,6 +14,7 @@ import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 
 import hamburg.walter.R;
+import hamburg.walter.fragments.InitFragment;
 import hamburg.walter.fragments.LoginFragment;
 import hamburg.walter.helper.FragmentReplacer;
 import hamburg.walter.helper.ShowSnackbar;
@@ -29,7 +30,7 @@ public class MainActivity extends FragmentActivity {
         View splashScreen =  findViewById(R.layout.splash_screen);
 
         checkNetworkConnection();
-        showFragment(LoginFragment.class);
+        showFragment(InitFragment.class);
     }
 
     @Override

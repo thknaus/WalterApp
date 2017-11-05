@@ -27,7 +27,7 @@ import static android.content.Context.MODE_PRIVATE;
 public class LoginFragment extends Fragment implements View.OnClickListener {
 
     private EditText emailTxt, password;
-    private Button login, register, forgotPW;
+    private Button login, forgotPW;
     private String emailtxt, passwordtxt;
     private User user;
     private SharedPreferences pref;
@@ -50,16 +50,14 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_login, container, false);
         user = User.getInstance();
-        pref = ((MainActivity)getActivity()).getSharedPreferences("AppPref", MODE_PRIVATE);
+        pref = (getActivity()).getSharedPreferences("AppPref", MODE_PRIVATE);
         emailTxt = (EditText) rootView.findViewById(R.id.loginemail);
         password = (EditText) rootView.findViewById(R.id.loginpw);
 
         login = (Button) rootView.findViewById(R.id.login_btn);
-        register = (Button) rootView.findViewById(R.id.register_btn);
         forgotPW = (Button) rootView.findViewById(R.id.forgotpw_btn);
 
         login.setOnClickListener(this);
-        register.setOnClickListener(this);
         forgotPW.setOnClickListener(this);
 
 
@@ -68,8 +66,8 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
 
     public void updateView() {
 
-        String email =((MainActivity)getActivity()).getIntent().getStringExtra("USER_EMAIL");
-        if(email != null){
+        String email =(getActivity()).getIntent().getStringExtra("USER_EMAIL");
+            if(email != null){
             emailTxt.setText(email);
         }
     }
@@ -102,9 +100,6 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
                         }
                     }
                 });
-                break;
-            case R.id.register_btn:
-                ((MainActivity)getActivity()).showFragment(RegisterFragment.class);
                 break;
             case R.id.forgotpw_btn:
                 ((MainActivity)getActivity()).showFragment(PasswordResetFragment.class);
