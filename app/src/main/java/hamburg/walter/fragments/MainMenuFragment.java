@@ -32,7 +32,7 @@ public class MainMenuFragment extends Fragment implements View.OnClickListener {
         Store.d("FavoriteFragment", stringableMessage);
     }
 
-    private Button newgameBtn, exitGameBtn, joinGameBtn, logoutBtn;
+    private Button newgameBtn, joinGameBtn, logoutBtn;
     private EditText playerNameTxt;
     private String name;
     private User user;
@@ -58,13 +58,11 @@ public class MainMenuFragment extends Fragment implements View.OnClickListener {
 
         newgameBtn = (Button) rootView.findViewById(R.id.button_newgame);
         joinGameBtn = (Button) rootView.findViewById(R.id.button_joingame);
-        exitGameBtn = (Button) rootView.findViewById(R.id.button_exitgame);
         logoutBtn = (Button) rootView.findViewById(R.id.logout_btn);
         playerNameTxt = (EditText) rootView.findViewById(R.id.text_playername);
 
         newgameBtn.setOnClickListener(this);
         joinGameBtn.setOnClickListener(this);
-        exitGameBtn.setOnClickListener(this);
         logoutBtn.setOnClickListener(this);
 
         return rootView;
@@ -105,9 +103,6 @@ public class MainMenuFragment extends Fragment implements View.OnClickListener {
                 break;
             case R.id.button_joingame:
                 ((MainActivity) getActivity()).showFragment(JoinGameFragment.class);
-                break;
-            case R.id.button_exitgame:
-                //todo
                 break;
             case  R.id.logout_btn:
                 ((MainActivity) getActivity()).showFragment(InitFragment.class);

@@ -2,8 +2,12 @@ package hamburg.walter.fragments;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -17,6 +21,7 @@ import org.json.JSONObject;
 
 import hamburg.walter.R;
 import hamburg.walter.data.Game;
+import hamburg.walter.helper.ShowSnackbar;
 import hamburg.walter.sync.AsyncClient;
 import hamburg.walter.sync.mJsonHttpResponseHandler;
 
@@ -24,11 +29,12 @@ import hamburg.walter.sync.mJsonHttpResponseHandler;
  * Created by Thomas on 23.10.2017.
  */
 
-public class NewGameLobbyFragment extends AppCompatActivity implements View.OnClickListener  {
+public class NewGameLobbyFragment extends Fragment implements View.OnClickListener  {
 
     EditText gameName;
     Button startBtn, backBtn;
     TextView gameId;
+    private String name;
 
     Game game;
 
@@ -36,36 +42,38 @@ public class NewGameLobbyFragment extends AppCompatActivity implements View.OnCl
     String player;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState){
+    public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
-
-        setContentView(R.layout.fragment_newgamelobby);
-        context = this;
 
         game = game.getInstance();
 
-        gameId = (TextView)findViewById(R.id.game_id);
+
+    }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        View rootView = inflater.inflate(R.layout.fragment_newgamelobby, container, false);
+
+        gameId = (TextView) rootView.findViewById(R.id.game_id);
         gameId.setText(game.getGameSessionId());
 
-        gameName = (EditText)findViewById(R.id.text_gamename);
-        startBtn = (Button)findViewById(R.id.button_startgame);
-        backBtn = (Button)findViewById(R.id.button_startgameback);
+        gameName = (EditText) rootView.findViewById(R.id.text_gamename);
+        startBtn = (Button) rootView.findViewById(R.id.button_startgame);
+        backBtn = (Button) rootView.findViewById(R.id.button_startgameback);
 
         startBtn.setOnClickListener(this);
         backBtn.setOnClickListener(this);
+
+        return rootView;
     }
-
-
-
 
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.button_startgame:
-                if(gameName.getText().toString().equals("")){
-                    /*
-                        TODO: ShowSnackbar choose game name
-                     */
+                name = gameName.getText().toString();
+                if(name.isEmpty()){
+                    new ShowSnackbar().showSnackbar(getView(), "Bitte wähle einen Namen für das Spiel");
                     break;
                 }
                 game.setGameName(gameName.toString());
